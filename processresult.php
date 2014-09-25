@@ -54,6 +54,11 @@
 
         <?php
             require_once("util/Helper.php");
+            require_once('licensediff.php');
+            require_once('util/git.php');
+            require_once('util/SvnPeer.php');
+
+            chdir("tmp");
                         
             function deldir($dir) {
               // remove the files under the current folder
@@ -151,8 +156,6 @@
                 return $statuscode; 
             }
 
-            require_once('licensediff.php');
-
             // Validate the variables from POST request
             if($_POST["projectname"] == "") {
                 echo "缺少项目名称";
@@ -219,10 +222,10 @@
             //echo "<br>";  
             // Initialize Standard License File Hashtable mem singleton object
             $licensecollection = array();
-            if ($handle = opendir('StandardLicenses')) {
+            if ($handle = opendir('../StandardLicenses')) {
                while (false !== ($entry = readdir($handle))) {
                    if ($entry != "." && $entry != "..") {
-                       $tempfilecontentarr = file("StandardLicenses/".$entry);
+                       $tempfilecontentarr = file("../StandardLicenses/".$entry);
                        $tempfilecontent = "";
                        foreach($tempfilecontentarr as $line) {
                            $tempfilecontent.=$line;
@@ -413,7 +416,6 @@
                         InsertStatusRecords($sessionId, "未发现许可文件，正在Git Clone代码仓库副本");
 
                         // Git clone the repository based on git URL
-                        require_once('util/git.php');
 
                         Git::windows_mode();
                         $repo = new GitRepo();
@@ -620,7 +622,6 @@
                     }
                     break;
                 case "svn":
-                    require_once('util/SvnPeer.php');
                     InsertStatusRecords($sessionId, "正在探测许可文件");
 
                     $fileList = SvnPeer::ls($urlText);
