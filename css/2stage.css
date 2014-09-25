@@ -1,0 +1,27 @@
+
+.navbar-list {
+	float: right;
+}
+
+.navbar-nav .active a {
+	color: #82bce4;
+}
+
+/* column */
+.column-header {
+	width: 100%;
+	height: 115px;
+	background : url('images/bg.png');
+	background-size: cover;
+}
+
+.column-header .title {
+	float: left;
+	margin: 44px 0 0;
+	font-size: 25px;
+	color: #ffffff;
+}
+
+.column-container {
+	margin: 0 5px;
+}

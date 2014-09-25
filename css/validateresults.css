@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: Calibri;
+}
+
+body > div {
+    padding: 2px
+}
+
+ins {
+    color: green;
+    background: #dfd;
+    text-decoration: none
+}
+
+del {
+    color: red;
+    background: #fdd;
+    text-decoration: none
+}
+
+textarea {
+    width: 300px;
+    height: 400px
+}
+
+#declare {
+    width: 800px;
+    padding-left: 150px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#titleresult {
+    font-size: 40px;
+	font-weight: bold;
+    color: black;
+}
+
+#resultsentencepass {
+    font-size: 40px;
+	font-weight: bold;
+    color: green;
+}
+
+#resultsentence {
+    font-size: 40px;
+	font-weight: bold;
+    color: red;
+}
+
+#suball {
+    width: 400px;
+    height: 250px;
+    margin: 100px auto;
+    margin-top: 10px;
+    border: 1px solid #000;
+    padding: 15px;
+    text-align: center;
+}
+
+#checkwithfailed {
+    padding-top: 50px;
+    padding-left: 150px
+}
+
+#originaldiv {
+    float: left;
+    padding-left: 150px
+}
+
+#standarddiv {
+    margin-left: 500px;
+    margin-top: 5px;
+}
+
+#originalcontent {
+    margin-right: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 400px;
+    height: 400px;
+    min-height:20em;
+    overflow: scroll;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#standardcontent {
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 400px;
+    height: 400px;
+    min-height:20em;
+    overflow: scroll;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#sourlink {
+    padding-left: 150px;
+    margin: 5px;
+}
+
+#moreinfo {
+    padding-left: 150px;
+    margin: 5px;
+}

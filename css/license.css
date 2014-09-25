@@ -1,0 +1,50 @@
+
+/* column nav */
+.column-nav-container {
+	margin: 20px -15px 0;
+	padding: 6px 0;
+	width: 100%;
+	height: 42px;
+	border-bottom: 2px solid #dcdcdc;
+}
+
+.column-nav {
+	padding-left: 15px;
+}
+
+.column-nav li {
+	float: left;
+	margin: 0 20px 0 0;
+	font-size: 16px;
+	list-style: none;
+}
+
+.column-nav a {
+	color: #808080;
+}
+
+.column-nav .active a, .column-nav a:hover {
+	color: #333333;
+}
+
+/* article */
+.article-block {
+	margin: 30px 0 46px;
+}
+
+.article-block .title {
+	font-size: 20px;
+	font-weight: bold;
+	color: #333333;
+}
+
+.article-block p {
+	margin-top: 16px;
+	font-size: 16px;
+	color: #808080;
+	line-height: 1.8em;
+}
+
+.article-block p a {
+	color: #0071bc;
+}
