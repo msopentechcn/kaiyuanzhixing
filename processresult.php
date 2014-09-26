@@ -293,7 +293,17 @@
                     // Send GET requests and try different kinds of license files
                     foreach($licensepatterns as $singlefile) {
                         $tempURL = $urlTextRaw."/".$singlefile;
-                        $lowerURL = $urlTextRaw."/".strtolower($singlefile);
+                        $comresult = stripos($singlefile, ".");
+                        if($comresult !== FALSE) {
+                            $pos1 = stripos($singlefile, '.');
+                            $sub1 = substr($singlefile, 0, $pos1);
+                            $sub2 = substr($singlefile, $pos1);
+                            $result = strtoupper($sub1).$sub2;
+                        }
+                        else {
+                            $result = strtolower($singlefile);
+                        }
+                        $lowerURL = $urlTextRaw."/".$result;
                         $upperURL = $urlTextRaw."/".strtoupper($singlefile);
                         $requests = array($tempURL, $lowerURL, $upperURL);
                         $main    = curl_multi_init();
