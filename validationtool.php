@@ -29,7 +29,7 @@
         <div id="overlay"></div>
         <div id="statusdialog">
             <div id="dialog">
-                <div id="statusinfo"></div>
+                <div id="statusinfo">正在初始化</div>
                 <img src="images/processing1.gif" alt="processing">
             </div>
         </div>
@@ -85,11 +85,11 @@
                         <div class="article-block input-bottom">
                             <p>源代码仓库URL</p>
                             <input class="form-control input-bottom" type="text" name="reprourl" id="reprou">
-                            <span id="wproRepo">   *</span>
                             <select class="form-control" name="rptype" id="reprotype">
 			                    <option value ="github">Git/GitHub</option>
 			                    <option value ="svn">SVN</option>
 			                </select>
+                            <span id="wproRepo">   *</span>
                         </div>
                         <div class="article-block input-bottom">
 			                <p>验证码</p>

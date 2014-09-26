@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 1);
+    ini_set('display_errors', 0);
     error_reporting(E_ALL);
 ?>
 
@@ -220,6 +220,7 @@
 
             //echo "Start loading license files at: ".date('Y-m-d H:i:s',time());;
             //echo "<br>";  
+
             // Initialize Standard License File Hashtable mem singleton object
             $licensecollection = array();
             if ($handle = opendir('../StandardLicenses')) {
@@ -236,6 +237,9 @@
                closedir($handle);
             }
 
+            $licensefilenames = array_keys($licensecollection);
+            $licesnefilecomtents = array_values($licensecollection);
+
             //echo "End loading license files at: ".date('Y-m-d H:i:s',time());;
             //echo "<br>";
 
@@ -245,12 +249,10 @@
             // Diff the license file
             switch($protocoltype) {
                 case "github":
-                    $licensefilenames = array_keys($licensecollection);
-                    $licesnefilecomtents = array_values($licensecollection);
-
                     $existLincese = FALSE;
 
-                    if(stripos($urlText, "github.com")) {
+                    $comresult = stripos($urlText, "github.com");
+                    if($comresult !== FALSE) {
                         $pos1 = stripos($urlText, "github.com");
                         $sub1 = substr($urlText, $pos1 + 10);
                         $pos2 = strrpos($sub1, "git");
@@ -258,14 +260,31 @@
                         $urlTextRaw = "https://raw.githubusercontent.com".$sub2."/master";
                         $githubProName = $sub2;
                     }
-                    else if(stripos($urlText, "git.oschina.net")) {
+                    $comresult = stripos($urlText, "git.oschina.net");
+                    if($comresult !== FALSE) {
                         $pos1 = stripos($urlText, "git.oschina.net");
                         $sub1 = substr($urlText, $pos1 + 15);
                         $pos2 = strrpos($sub1, "git");
                         $sub2 = substr($sub1, 0, $pos2 - 1);
                         $urlTextRaw = "https://git.oschina.net".$sub2."/raw/master";
                     }
-
+                    $comresult = stripos($urlText, "gitcafe.com");
+                    if($comresult !== FALSE) {
+                        $pos1 = stripos($urlText, "gitcafe.com");
+                        $sub1 = substr($urlText, $pos1 + 11);
+                        $pos2 = strrpos($sub1, "git");
+                        $sub2 = substr($sub1, 0, $pos2 - 1);
+                        $urlTextRaw = "https://gitcafe.com".$sub2."/raw/master";
+                    }
+                    $comresult = stripos($urlText, "code.csdn.net");
+                    if($comresult !== FALSE) {
+                        $pos1 = stripos($urlText, "code.csdn.net");
+                        $sub1 = substr($urlText, $pos1 + 13);
+                        $pos2 = strrpos($sub1, "git");
+                        $sub2 = substr($sub1, 0, $pos2 - 1);
+                        $urlTextRaw = "https://gitcafe.com".$sub2."/blob/master";
+                    }
+                    
                     InsertStatusRecords($sessionId, "正在探测许可文件");
  
                     //echo "Start Http Requests at: ".date('Y-m-d H:i:s',time());;
@@ -277,16 +296,12 @@
                         $lowerURL = $urlTextRaw."/".strtolower($singlefile);
                         $upperURL = $urlTextRaw."/".strtoupper($singlefile);
                         $requests = array($tempURL, $lowerURL, $upperURL);
-                        //print_r($requests);
-                        //echo "<br>";
                         $main    = curl_multi_init();
                         $results = array();
-                        //$errors  = array();
-                        //$info = array();
                         $count = count($requests);
                         for($i = 0; $i < $count; $i++) 
                         {  
-                            $handles[$i] = curl_init($requests[$i]);  
+                            $handles[$i] = curl_init();  
                             curl_setopt($handles[$i], CURLOPT_URL, $requests[$i]);
                             curl_setopt($handles[$i], CURLOPT_TIMEOUT, 2);
 	                        curl_setopt($handles[$i], CURLOPT_SSL_VERIFYPEER, false);
@@ -294,13 +309,29 @@
                             curl_setopt($handles[$i], CURLOPT_RETURNTRANSFER, 1);  
                             curl_multi_add_handle($main, $handles[$i]);
                         }
+                        
                         $running = 0; 
                         do {  
                             curl_multi_exec($main, $running);
-                        } 
-                        while($running > 0); 
+                        }while($running > 0);
+                        
+                        /*$active = NULL;
+                        do {
+                            $mrc = curl_multi_exec($main, $active);
+                        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+
+                        while ($active && $mrc == CURLM_OK) {
+                            if (curl_multi_select($main) != -1) {
+                                do {
+                                    $mrc = curl_multi_exec($main, $active);
+                                } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+                            }
+                        }*/
+
                         for($i = 0; $i < $count; $i++){                        
                             $statuscode = curl_getinfo($handles[$i], CURLINFO_HTTP_CODE);
+                            //echo "handles[".$i."] status code: ".$statuscode;
+                            //echo "<br>";
                             if($statuscode == 200) {
                                 $existLincese = TRUE;
                                 $curl_result = curl_multi_getcontent($handles[$i]);
@@ -313,7 +344,7 @@
                         if($existLincese == TRUE) {
                             break;
                         }
-                    }           
+                    }          
   
                     //echo "End Http Requests at: ".date('Y-m-d H:i:s',time());;
                     //echo "<br>";
@@ -322,14 +353,42 @@
                         InsertStatusRecords($sessionId, "正在比较许可文件");
 
                         //echo "Start compare license files at: ".date('Y-m-d H:i:s',time());;
-                        //echo "<br>"; 
+                        //echo "<br>";
 
                         // Pick up the right license files
                         $keyFiles = array();
                         foreach($licensedetectkeywords as $key => $value) {
-                            if(stripos($curl_result, $value) == 0) {
+                            $comresult = stripos($curl_result, $value);
+                            if($comresult !== FALSE) {
                                 array_push($keyFiles, $key);
                             }
+                        }
+
+                        if(count($keyFiles) == 0) {
+                            echo "<div>
+                                    <div id=\"checkwithfailed\">
+                                        <span id=\"titleresult\">评估结果:</span>
+                                        <span id=\"resultsentence\">许可证文件库未发现匹配文件</span>
+                                    </div>
+                                    <div id=\"declare\">
+                                        <span>原因: 在我们的许可证文件库未发现您的许可证类型: </span>
+                                    </div>
+                                    <div id=\"sourlink\">
+                                        <a href=\""; 
+                                echo $urlText; 
+                                echo "\">";
+                                echo $urlText; 
+                                echo "</a>
+                                    <br>我们会稍后评估并补充许可证文件库</div>
+                                    <div id=\"moreinfo\">
+                                        <span>请参考下面的链接:</span><br>
+                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                    </div>
+                                </div>";
+                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                            RemoveStatusRecords($sessionId);
+                            die();
                         }
 
                         // Compare original license file with standard license files
@@ -339,6 +398,7 @@
                         $maxRatio = 0;
                         $maxKey = 0;
                         foreach($keyFiles as $key => $value) {
+                            str_replace("\\n", "", $licesnefilecomtents[$value]);
                             $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$value]));
                             $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $curl_result));
                             array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
@@ -354,6 +414,7 @@
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
 
                         if(substr_count($comparedStandardLicenseFileContent, "<ins>") == 0 && substr_count($comparedStandardLicenseFileContent, "<del>") == 0) {
+                        //if(TRUE) {
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
 
                             echo "<div>
@@ -390,7 +451,7 @@
                                         <span id=\"resultsentence\">评估失败</span>
                                     </div>
                                     <div id=\"declare\">
-                                        <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
+                                        <span>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                             echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
                             echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
                                     </div>
@@ -405,7 +466,7 @@
                             echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
                             echo "</div>
                                         <div id=\"standardcontent\">";
-                            echo trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]]));
+                            echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]])), ENT_QUOTES);
                             echo "</div>
                                     </div>
                                     </div>";
@@ -431,7 +492,8 @@
                         $tempName = $ran.$timeparts[1];
                         $foldername = $GitName.$tempName;
 
-                        if(stripos($urlText, "github.com")) {
+                        $comresult = stripos($urlText, "github.com");
+                        if($comresult !== FALSE) {
                             $githubRepoSize = getGitHubSize($githubProName);
                             if($githubRepoSize > 500000) {
                                 echo "您的Git Hub仓库代码超过500M！";
@@ -500,10 +562,38 @@
                             // Pick up the right license files
                             $keyFiles = array();
                             foreach($licensedetectkeywords as $key => $value) {
-                                if(stripos($originalfilecontent, $value) == 0) {
+                                $comresult = stripos($originalfilecontent, $value);
+                                if($comresult !== FALSE) {
                                     array_push($keyFiles, $key);
                                 }
                             }
+
+                            if(count($keyFiles) == 0) {
+                            echo "<div>
+                                    <div id=\"checkwithfailed\">
+                                        <span id=\"titleresult\">评估结果:</span>
+                                        <span id=\"resultsentence\">许可证文件库未发现匹配文件</span>
+                                    </div>
+                                    <div id=\"declare\">
+                                        <span>原因: 在我们的许可证文件库未发现您的许可证类型: </span>
+                                    </div>
+                                    <div id=\"sourlink\">
+                                        <a href=\""; 
+                                echo $urlText; 
+                                echo "\">";
+                                echo $urlText; 
+                                echo "</a>
+                                    <br>我们会稍后评估并补充许可证文件库</div>
+                                    <div id=\"moreinfo\">
+                                        <span>请参考下面的链接:</span><br>
+                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                    </div>
+                                </div>";
+                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                            RemoveStatusRecords($sessionId);
+                            die();
+                        }
 
                             // Compare original license file with standard license files
                             $diffOpcodeArr = array();
@@ -512,6 +602,7 @@
                             $maxRatio = 0;
                             $maxKey = 0;
                             foreach($keyFiles as $key => $value) {
+                                str_replace("\\n", "", $licesnefilecomtents[$value]);
                                 $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$value]));
                                 $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
                                 array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
@@ -580,7 +671,7 @@
                                 echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
                                 echo "</div>
                                             <div id=\"standardcontent\">";
-                                echo trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]]));
+                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]])), ENT_QUOTES);
                                 echo "</div>
                                         </div>
                                         </div>";
@@ -693,9 +784,37 @@
                         // Pick up the right license files
                         $keyFiles = array();
                         foreach($licensedetectkeywords as $key => $value) {
-                            if(stripos($originalfilecontent, $value) == 0) {
+                            $comresult = stripos($originalfilecontent, $value);
+                            if($comresult !== FALSE) {
                                 array_push($keyFiles, $key);
                             }
+                        }
+
+                        if(count($keyFiles) == 0) {
+                            echo "<div>
+                                    <div id=\"checkwithfailed\">
+                                        <span id=\"titleresult\">评估结果:</span>
+                                        <span id=\"resultsentence\">许可证文件库未发现匹配文件</span>
+                                    </div>
+                                    <div id=\"declare\">
+                                        <span>原因: 在我们的许可证文件库未发现您的许可证类型: </span>
+                                    </div>
+                                    <div id=\"sourlink\">
+                                        <a href=\""; 
+                                echo $urlText; 
+                                echo "\">";
+                                echo $urlText; 
+                                echo "</a>
+                                    <br>我们会稍后评估并补充许可证文件库</div>
+                                    <div id=\"moreinfo\">
+                                        <span>请参考下面的链接:</span><br>
+                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                    </div>
+                                </div>";
+                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                            RemoveStatusRecords($sessionId);
+                            die();
                         }
 
                         // Compare original license file with standard license files
@@ -705,6 +824,7 @@
                         $maxRatio = 0;
                         $maxKey = 0;
                         foreach($keyFiles as $key => $value) {
+                            str_replace("\\n", "", $licesnefilecomtents[$value]);
                             $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$value]));
                             $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
                             array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
