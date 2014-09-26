@@ -50,6 +50,24 @@ function validateFields() {
             $("#wproRepo").text("");
             $("#proname").parent().addClass("has-success");
         }
+
+        if($('#reprotype').val() == 'github') {
+            var existense = $('#reprou').val().indexOf('git');
+            if(existense == -1) {
+                $("#wproRepo").text("请输入一个有效的Git/GitHub URL");
+                $("#proname").parent().addClass("has-warning");
+                return false
+            }
+        }
+
+        if($('#reprotype').val() == 'svn') {
+            var existense = $('#reprou').val().indexOf('svn');
+            if(existense == -1) {
+                $("#wproRepo").text("请输入一个有效的SVN URL");
+                $("#proname").parent().addClass("has-warning");
+                return false
+            }
+        }
     }
 
     // Validate Verification Code

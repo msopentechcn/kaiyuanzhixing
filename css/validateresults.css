@@ -5,19 +5,15 @@ body {
     font-family: Calibri;
 }
 
-body > div {
-    padding: 2px
-}
-
 ins {
-    color: green;
-    background: #dfd;
+    color: white;
+    background: #005500;
     text-decoration: none
 }
 
 del {
-    color: red;
-    background: #fdd;
+    color: white;
+    background: #990000;
     text-decoration: none
 }
 

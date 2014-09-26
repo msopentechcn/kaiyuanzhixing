@@ -111,7 +111,7 @@
                         <div>
                             <input type="hidden" id="captchavalue" value="<?php echo $_SESSION['captcha']['code']; ?>">
                             <input type="hidden" name="ipaddr" value="<?php echo getIP(); ?>">
-                            <input type="hidden" name="sessionid" id="sessid" value="<?php echo session_id(); ?>>">
+                            <input type="hidden" name="sessionid" id="sessid" value="<?php echo session_id(); ?>">
                         </div>
 		            </form>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 0);
+    ini_set('display_errors', 1);
     error_reporting(E_ALL);
 ?>
 
@@ -57,6 +57,11 @@
             require_once('licensediff.php');
             require_once('util/git.php');
             require_once('util/SvnPeer.php');
+            require_once('util/Logger.php');
+
+            $logger = new Logger("log");
+            $loghelperArr = array();
+            $logger->log('info', '<===================================================>', $loghelperArr);
 
             chdir("tmp");
                         
@@ -121,8 +126,6 @@
                     $row = mysql_fetch_array($result, MYSQL_NUM);
 
                     $currentidURL = $row[0];
-                    echo "currentidURL: ".$currentidURL;
-                    echo "<br>";
 
                     $latestTime = date('y-m-d h:i:s',time());
                     $sqlComm = "insert into kys.reprovisithistory(idRepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType) values(".$currentidURL.", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\")";
@@ -245,6 +248,7 @@
 
             // Determine the protocol type
             $protocoltype = $_POST["rptype"];
+            $curl_result = "";
 
             // Diff the license file
             switch($protocoltype) {
@@ -285,10 +289,12 @@
                         $urlTextRaw = "https://gitcafe.com".$sub2."/blob/master";
                     }
                     
+                    $logger->log('debug', $urlTextRaw, $loghelperArr);
+                    $logger->log('debug', 'Start HttpRequests at: '.date('Y-m-d H:i:s', time()), $loghelperArr);
+                    $start_time = microtime();
+
                     InsertStatusRecords($sessionId, "正在探测许可文件");
- 
-                    //echo "Start Http Requests at: ".date('Y-m-d H:i:s',time());;
-                    //echo "<br>";
+
 
                     // Send GET requests and try different kinds of license files
                     foreach($licensepatterns as $singlefile) {
@@ -306,6 +312,8 @@
                         $lowerURL = $urlTextRaw."/".$result;
                         $upperURL = $urlTextRaw."/".strtoupper($singlefile);
                         $requests = array($tempURL, $lowerURL, $upperURL);
+
+                        // Use multi-curl requests
                         $main    = curl_multi_init();
                         $results = array();
                         $count = count($requests);
@@ -313,7 +321,7 @@
                         {  
                             $handles[$i] = curl_init();  
                             curl_setopt($handles[$i], CURLOPT_URL, $requests[$i]);
-                            curl_setopt($handles[$i], CURLOPT_TIMEOUT, 2);
+                            curl_setopt($handles[$i], CURLOPT_TIMEOUT, 10);
 	                        curl_setopt($handles[$i], CURLOPT_SSL_VERIFYPEER, false);
                             curl_setopt($handles[$i], CURLOPT_SSL_VERIFYHOST, false);  
                             curl_setopt($handles[$i], CURLOPT_RETURNTRANSFER, 1);  
@@ -324,46 +332,35 @@
                         do {  
                             curl_multi_exec($main, $running);
                         }while($running > 0);
-                        
-                        /*$active = NULL;
-                        do {
-                            $mrc = curl_multi_exec($main, $active);
-                        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
 
-                        while ($active && $mrc == CURLM_OK) {
-                            if (curl_multi_select($main) != -1) {
-                                do {
-                                    $mrc = curl_multi_exec($main, $active);
-                                } while ($mrc == CURLM_CALL_MULTI_PERFORM);
-                            }
-                        }*/
-
+                        $detectPt = 0;
                         for($i = 0; $i < $count; $i++){                        
                             $statuscode = curl_getinfo($handles[$i], CURLINFO_HTTP_CODE);
-                            //echo "handles[".$i."] status code: ".$statuscode;
-                            //echo "<br>";
                             if($statuscode == 200) {
                                 $existLincese = TRUE;
                                 $curl_result = curl_multi_getcontent($handles[$i]);
+                                $detectPt = $i;
                                 break;
                             }
+                            curl_close($handles[$i]);
                             curl_multi_remove_handle($main, $handles[$i]);
                         }
+                        
                         curl_multi_close($main);
 
                         if($existLincese == TRUE) {
+                            $logger->log('debug', 'found licesefile: '.$singlefile, $requests);
                             break;
                         }
                     }          
-  
-                    //echo "End Http Requests at: ".date('Y-m-d H:i:s',time());;
-                    //echo "<br>";
+
+                    $logger->log('debug', 'End HttpRequests at: '.date('Y-m-d H:i:s', time()), $loghelperArr);
+                    $end_time = microtime();
+                    $difftime = abs($end_time - $start_time);
+                    $logger->log('debug', 'time cost: '.$difftime, $loghelperArr);
 
                     if($existLincese == TRUE) {
                         InsertStatusRecords($sessionId, "正在比较许可文件");
-
-                        //echo "Start compare license files at: ".date('Y-m-d H:i:s',time());;
-                        //echo "<br>";
 
                         // Pick up the right license files
                         $keyFiles = array();
@@ -408,9 +405,13 @@
                         $maxRatio = 0;
                         $maxKey = 0;
                         foreach($keyFiles as $key => $value) {
-                            str_replace("\\n", "", $licesnefilecomtents[$value]);
-                            $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$value]));
-                            $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $curl_result));
+                            $licenseProcessedFile = trim($licesnefilecomtents[$value]);
+                            $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
+                            $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licenseProcessedFile));
+
+                            $curl_resultProcessed = trim($curl_result);
+                            $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
+                            $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $curl_resultProcessed));
                             array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
                             if(LicenseDiff::$diffLength < $minDiff || $minDiff == 0) {
                                 $minDiff = LicenseDiff::$diffLength;
@@ -418,13 +419,9 @@
                             }
                         }
 
-                        //echo "End compare license files at: ".date('Y-m-d H:i:s',time());;
-                        //echo "<br>";
-
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
 
                         if(substr_count($comparedStandardLicenseFileContent, "<ins>") == 0 && substr_count($comparedStandardLicenseFileContent, "<del>") == 0) {
-                        //if(TRUE) {
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
 
                             echo "<div>
@@ -564,9 +561,6 @@
                         if($existLincese == TRUE) {
                             InsertStatusRecords($sessionId, "正在比较许可文件");
 
-                            //echo "Start compare license files at (inner): ".date('Y-m-d H:i:s',time());;
-                            //echo "<br>"; 
-
                             $originalfilecontent = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
 
                             // Pick up the right license files
@@ -612,18 +606,20 @@
                             $maxRatio = 0;
                             $maxKey = 0;
                             foreach($keyFiles as $key => $value) {
-                                str_replace("\\n", "", $licesnefilecomtents[$value]);
-                                $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$value]));
-                                $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
+                                $licenseProcessedFile = trim($licesnefilecomtents[$value]);
+                                $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
+                                $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licenseProcessedFile));
+
+                                $curl_resultProcessed = trim($originalfilecontent);
+                                $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
+                                $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $curl_resultProcessed));
+
                                 array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
                                 if(LicenseDiff::$diffLength < $minDiff || $minDiff == 0) {
                                     $minDiff = LicenseDiff::$diffLength;
                                     $minKey = $key;
                                 }
                             }
-
-                            //echo "End compare license files at (inner): ".date('Y-m-d H:i:s',time());;
-                            //echo "<br>";
 
                             $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
                             
