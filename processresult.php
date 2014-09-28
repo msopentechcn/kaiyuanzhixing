@@ -253,40 +253,28 @@
             // Diff the license file
             switch($protocoltype) {
                 case "github":
+                    $githubProName = '';
                     $existLincese = FALSE;
 
-                    $comresult = stripos($urlText, "github.com");
-                    if($comresult !== FALSE) {
-                        $pos1 = stripos($urlText, "github.com");
-                        $sub1 = substr($urlText, $pos1 + 10);
-                        $pos2 = strrpos($sub1, "git");
-                        $sub2 = substr($sub1, 0, $pos2 - 1);
-                        $urlTextRaw = "https://raw.githubusercontent.com".$sub2."/master";
-                        $githubProName = $sub2;
-                    }
-                    $comresult = stripos($urlText, "git.oschina.net");
-                    if($comresult !== FALSE) {
-                        $pos1 = stripos($urlText, "git.oschina.net");
-                        $sub1 = substr($urlText, $pos1 + 15);
-                        $pos2 = strrpos($sub1, "git");
-                        $sub2 = substr($sub1, 0, $pos2 - 1);
-                        $urlTextRaw = "https://git.oschina.net".$sub2."/raw/master";
-                    }
-                    $comresult = stripos($urlText, "gitcafe.com");
-                    if($comresult !== FALSE) {
-                        $pos1 = stripos($urlText, "gitcafe.com");
-                        $sub1 = substr($urlText, $pos1 + 11);
-                        $pos2 = strrpos($sub1, "git");
-                        $sub2 = substr($sub1, 0, $pos2 - 1);
-                        $urlTextRaw = "https://gitcafe.com".$sub2."/raw/master";
-                    }
-                    $comresult = stripos($urlText, "code.csdn.net");
-                    if($comresult !== FALSE) {
-                        $pos1 = stripos($urlText, "code.csdn.net");
-                        $sub1 = substr($urlText, $pos1 + 13);
-                        $pos2 = strrpos($sub1, "git");
-                        $sub2 = substr($sub1, 0, $pos2 - 1);
-                        $urlTextRaw = "https://gitcafe.com".$sub2."/blob/master";
+                    $sitescontent = file('../conf/approved-sites.json');
+                    $approvedsites = '';
+                    foreach($sitescontent as $line) {
+                        $approvedsites.=$line;
+	                }
+
+                    $decodedArr = json_decode($approvedsites, TRUE);
+                    foreach($decodedArr as $siteInstance) {
+                        $comresult = stripos($urlText, $siteInstance['website']);
+                        if($comresult !== FALSE) {
+                            $pos1 = stripos($urlText, $siteInstance['website']);
+                            $sub1 = substr($urlText, $pos1 + strlen($siteInstance['website']));
+                            $pos2 = strrpos($sub1, "git");
+                            $sub2 = substr($sub1, 0, $pos2 - 1);
+                            if($siteInstance['website'] == 'github.com') {
+                                $githubProName = $sub2;
+                            }
+                            $urlTextRaw = $siteInstance['prefix'].$sub2.$siteInstance['suffix'];
+                        }
                     }
                     
                     $logger->log('debug', $urlTextRaw, $loghelperArr);
@@ -319,7 +307,7 @@
                         $count = count($requests);
                         for($i = 0; $i < $count; $i++) 
                         {  
-                            $handles[$i] = curl_init();  
+                            $handles[$i] = curl_init();
                             curl_setopt($handles[$i], CURLOPT_URL, $requests[$i]);
                             curl_setopt($handles[$i], CURLOPT_TIMEOUT, 10);
 	                        curl_setopt($handles[$i], CURLOPT_SSL_VERIFYPEER, false);
