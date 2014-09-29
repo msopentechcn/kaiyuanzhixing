@@ -90,27 +90,19 @@
               }
             }
 
-            function RemoveStatusRecords($sid) {
-                $conn = mysql_connect('localhost','root','') or die ("数据连接错误!!!");
-                mysql_select_db('kys',$conn);
-
+            function RemoveStatusRecords($sid, $conn) {
                 $sqlComm = "delete from kys.processstatus where chSessionId = \"".$sid."\"";
                 $result = mysql_query($sqlComm, $conn);
             }
 
-            function InsertStatusRecords($sid, $stat) {
-                $conn = mysql_connect('localhost','root','') or die ("数据连接错误!!!");
-                mysql_select_db('kys',$conn);
-
+            function InsertStatusRecords($sid, $stat, $conn) {
                 $latestTime = date('y-m-d h:i:s',time());
                 $sqlComm = "insert into kys.processstatus(chSessionId, chStatus, dtUpdateTime) values(\"".$sid."\", \"".$stat."\", \"".$latestTime."\")";
 
                 $result = mysql_query($sqlComm, $conn);
             }
 
-            function InsertRecords($urlText, $validationresult, $projectname, $projectsite, $projectversion, $clientip, $repotype) {
-                $conn = mysql_connect('localhost','root','') or die ("数据连接错误!!!");
-                mysql_select_db('kys',$conn);
+            function InsertRecords($urlText, $validationresult, $projectname, $projectsite, $projectversion, $clientip, $repotype, $conn) {
 
                 $sqlComm = "select idRepoURLs from kys.repourls where chRepoURL = \"".$urlText."\"";
                 $result = mysql_query($sqlComm, $conn);
@@ -189,7 +181,9 @@
             $sessionId = $_POST["sessionid"];
 
             // Initialize MySQL connection and query if it is allowed to verify
-            InsertStatusRecords($sessionId, "正在初始化");
+            $conn = mysql_connect('localhost','root','') or die ("数据连接错误!!!");
+
+            InsertStatusRecords($sessionId, "正在初始化", $conn);
 
             $urlText = $_POST["reprourl"];
             $conn = mysql_connect('localhost','root','') or die ("数据连接错误!!!");
@@ -211,7 +205,7 @@
                     $currentTime = date('y-m-d h:i:s',time());
                     $diff = strtotime($currentTime) - strtotime($lastVisit);
                     if(abs($diff) < 60) {
-                        echo "此开源项目正在被验证过程中。。。";
+                        echo "访问很频繁，此开源项目正在被验证过程中。。。";
                         die();
                     }
                 }
@@ -219,7 +213,7 @@
 
             // Put license file patterns into array
             $licensepatterns = array('License', 'License.txt', 'License.md', 'Copying', 'Copying.txt', 'Copyright', 'Copyright.txt');
-            $licensedetectkeywords = array('Academic Free License', 'ADAPTIVE PUBLIC LICENSE', 'Apache License', 'APPLE PUBLIC SOURCE LICENSE', 'Artistic License 2.0', 'Attribution Assurance License', 'Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following', 'The authors of the CeCILL (for Ce[a] C[nrs] I[nria] L[ogiciel] L[ibre]) license are', '(The CNRI portion of the multi-part Python License.) (CNRI-Python)', 'COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL)', 'Common Public Attribution License Version 1.0', 'Computer Associates Trusted Open Source License', 'CUA Office Public License Version 1.0', 'Eclipse Public License, Version 1.0', 'Educational Community License, Version 2.0', 'Eiffel Forum License, version 2', 'Entessa Public License Version. 1.0', 'EU DataGrid Software License', 'The European Union Public License', 'Fair License', 'THE FRAMEWORX OPEN LICENSE 1.0', 'Copyright (C) 2007 Free Software Foundation, Inc.', 'The GNU General Public License', 'GNU GENERAL PUBLIC LICENSE', 'Historical Permission Notice and Disclaimer', 'IPA Font License Agreement v1.0', 'IBM Public License Version 1.0', 'Copyright (c) 4-digit year, Company or Person\'s Name', 'GNU Lesser General Public License', 'GNU LESSER GENERAL PUBLIC LICENSE', 'Lucent Public License Version 1.02', 'LPPL Version 1.3c 2008-05-04', 'To apply the template(1) specify the years of copyright (separated by comma, not as a range), the legal names of the copyright holders, and the real names of the authors if different. Avoid adding text.', 'The MIT License', 'MOTOSOTO OPEN SOURCE LICENSE', 'Mozilla Public License', 'This license governs use of the accompanying software', 'Historical Background', 'NASA OPEN SOURCE AGREEMENT VERSION 1.3', 'NAUMEN Public License', 'University of Illinois/NCSA Open Source License', 'Nethack General Public License', 'Nokia Open Source License', 'Non-Profit Open Software License 3.0', 'Copyright (c) (CopyrightHoldersName) (From 4-digit-year)-(To 4-digit-year)', 'OCLC Research Public License 2.0 License', 'Copyright (c) <dates>, <Copyright Holder>', 'The Open Group Test Suite License', 'Open Software License v. 3.0', 'The PHP License', 'This is a template license', 'Python License, Version 2', 'The Q Public License Version 1.0', 'Reciprocal Public License', 'RealNetworks Public Source License Version 1.0', 'Ricoh Source Code Public License', 'This Simple Public License 2.0', 'The Sleepycat License', 'SUN PUBLIC LICENSE Version 1.0', 'The BSD 2-Clause License', 'The BSD 3-Clause License', 'Vovida Software License v. 1.0', 'W3C? SOFTWARE NOTICE AND LICENSE', 'USE OF THE SYBASE OPEN WATCOM SOFTWARE DESCRIBED BELOW ("SOFTWARE")', 'The wxWindows Library Licence', 'The X.Net, Inc. License', 'The zlib/libpng License', 'Zope Public License (ZPL) Version 2.0');
+            $licensedetectkeywords = array('Academic Free License', 'ADAPTIVE PUBLIC LICENSE', 'Apache License', 'Apache License', 'Apache License', 'APPLE PUBLIC SOURCE LICENSE', 'Artistic License 2.0', 'Attribution Assurance License', 'Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following', 'The authors of the CeCILL (for Ce[a] C[nrs] I[nria] L[ogiciel] L[ibre]) license are', '(The CNRI portion of the multi-part Python License.) (CNRI-Python)', 'COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL)', 'Common Public Attribution License Version 1.0', 'Computer Associates Trusted Open Source License', 'CUA Office Public License Version 1.0', 'Eclipse Public License, Version 1.0', 'Educational Community License, Version 2.0', 'Eiffel Forum License, version 2', 'Entessa Public License Version. 1.0', 'EU DataGrid Software License', 'The European Union Public License', 'Fair License', 'THE FRAMEWORX OPEN LICENSE 1.0', 'Copyright (C) 2007 Free Software Foundation, Inc.', 'The GNU General Public License', 'GNU GENERAL PUBLIC LICENSE', 'Historical Permission Notice and Disclaimer', 'IPA Font License Agreement v1.0', 'IBM Public License Version 1.0', 'Copyright (c) 4-digit year, Company or Person\'s Name', 'GNU Lesser General Public License', 'GNU LESSER GENERAL PUBLIC LICENSE', 'Lucent Public License Version 1.02', 'LPPL Version 1.3c 2008-05-04', 'To apply the template(1) specify the years of copyright (separated by comma, not as a range), the legal names of the copyright holders, and the real names of the authors if different. Avoid adding text.', 'The MIT License', 'MOTOSOTO OPEN SOURCE LICENSE', 'Mozilla Public License', 'This license governs use of the accompanying software', 'Historical Background', 'NASA OPEN SOURCE AGREEMENT VERSION 1.3', 'NAUMEN Public License', 'University of Illinois/NCSA Open Source License', 'Nethack General Public License', 'Nokia Open Source License', 'Non-Profit Open Software License 3.0', 'Copyright (c) (CopyrightHoldersName) (From 4-digit-year)-(To 4-digit-year)', 'OCLC Research Public License 2.0 License', 'Copyright (c) <dates>, <Copyright Holder>', 'The Open Group Test Suite License', 'Open Software License v. 3.0', 'The PHP License', 'This is a template license', 'Python License, Version 2', 'The Q Public License Version 1.0', 'Reciprocal Public License', 'RealNetworks Public Source License Version 1.0', 'Ricoh Source Code Public License', 'This Simple Public License 2.0', 'The Sleepycat License', 'SUN PUBLIC LICENSE Version 1.0', 'The BSD 2-Clause License', 'The BSD 3-Clause License', 'Vovida Software License v. 1.0', 'W3C? SOFTWARE NOTICE AND LICENSE', 'USE OF THE SYBASE OPEN WATCOM SOFTWARE DESCRIBED BELOW ("SOFTWARE")', 'The wxWindows Library Licence', 'The X.Net, Inc. License', 'The zlib/libpng License', 'Zope Public License (ZPL) Version 2.0');
 
             //echo "Start loading license files at: ".date('Y-m-d H:i:s',time());;
             //echo "<br>";  
@@ -281,8 +275,7 @@
                     $logger->log('debug', 'Start HttpRequests at: '.date('Y-m-d H:i:s', time()), $loghelperArr);
                     $start_time = microtime();
 
-                    InsertStatusRecords($sessionId, "正在探测许可文件");
-
+                    InsertStatusRecords($sessionId, "正在探测许可文件", $conn);
 
                     // Send GET requests and try different kinds of license files
                     foreach($licensepatterns as $singlefile) {
@@ -348,7 +341,7 @@
                     $logger->log('debug', 'time cost: '.$difftime, $loghelperArr);
 
                     if($existLincese == TRUE) {
-                        InsertStatusRecords($sessionId, "正在比较许可文件");
+                        InsertStatusRecords($sessionId, "正在比较许可文件", $conn);
 
                         // Pick up the right license files
                         $keyFiles = array();
@@ -358,6 +351,9 @@
                                 array_push($keyFiles, $key);
                             }
                         }
+
+                        $logger->log('debug', 'Picked up license files: ', $keyFiles);
+                        $logger->log('debug', 'The length of keyFiles: '.count($keyFiles), $loghelperArr);
 
                         if(count($keyFiles) == 0) {
                             echo "<div>
@@ -381,8 +377,8 @@
                                         <a href=\"www.google.com\">如何建立您的开源许可证?</a>
                                     </div>
                                 </div>";
-                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
-                            RemoveStatusRecords($sessionId);
+                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
+                            RemoveStatusRecords($sessionId, $conn);
                             die();
                         }
 
@@ -392,14 +388,17 @@
                         $minKey = 0;
                         $maxRatio = 0;
                         $maxKey = 0;
+
+                        $curl_resultProcessed = trim($curl_result);
+                        $curl_resultProcessed = trim(preg_replace('/\s+/', ' ', $curl_resultProcessed));
+                        $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
+                        $curl_resultProcessed = htmlspecialchars_decode($curl_resultProcessed);
+
                         foreach($keyFiles as $key => $value) {
                             $licenseProcessedFile = trim($licesnefilecomtents[$value]);
                             $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
-                            $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licenseProcessedFile));
+                            $licenseProcessedFile = trim(preg_replace('/\s+/', ' ', $licenseProcessedFile));
 
-                            $curl_resultProcessed = trim($curl_result);
-                            $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
-                            $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $curl_resultProcessed));
                             array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
                             if(LicenseDiff::$diffLength < $minDiff || $minDiff == 0) {
                                 $minDiff = LicenseDiff::$diffLength;
@@ -409,8 +408,8 @@
 
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
 
-                        if(substr_count($comparedStandardLicenseFileContent, "<ins>") == 0 && substr_count($comparedStandardLicenseFileContent, "<del>") == 0) {
-                            InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                        if(verifyPass($comparedStandardLicenseFileContent, $licesnefilecomtents[$keyFiles[$minKey]])) {
+                            InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
@@ -435,10 +434,10 @@
                             echo "</div>
                                     </div>
                                 </div>";
-                            RemoveStatusRecords($sessionId);
+                            RemoveStatusRecords($sessionId, $conn);
                         }
                         else {
-                            InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                            InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
@@ -452,24 +451,25 @@
                                     </div>
                                     <div id=\"originaldiv\">
                                         <div>您的许可证比较结果</div>
-                                        <div id=\"originalcontent\">";
+                                        <div id=\"originalcontent\"><pre>";
                             echo $comparedStandardLicenseFileContent; 
-                            echo "</div>
+                            echo "</pre></div>
                                     </div>
                                     <div id=\"standarddiv\">
                                     <div>";
                             echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
                             echo "</div>
-                                        <div id=\"standardcontent\">";
-                            echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]])), ENT_QUOTES);
-                            echo "</div>
+                                        <div id=\"standardcontent\"><pre>";
+                            echo htmlspecialchars($licesnefilecomtents[$keyFiles[$minKey]]);
+                            echo "</pre></div>
                                     </div>
                                     </div>";
-                            RemoveStatusRecords($sessionId);
+                            RemoveStatusRecords($sessionId, $conn);
                         }
                     }
                     else {
-                        InsertStatusRecords($sessionId, "未发现许可文件，正在Git Clone代码仓库副本");
+                        $logger->log('debug', 'License file not found', $loghelperArr);
+                        InsertStatusRecords($sessionId, "未发现许可文件，正在Git Clone代码仓库副本", $conn);
 
                         // Git clone the repository based on git URL
 
@@ -490,7 +490,9 @@
                         $comresult = stripos($urlText, "github.com");
                         if($comresult !== FALSE) {
                             $githubRepoSize = getGitHubSize($githubProName);
+                            $logger->log('debug', 'Repository size is: '.$githubRepoSize, $loghelperArr);
                             if($githubRepoSize > 500000) {
+                                $logger->log('debug', 'Repository is over 500M', $loghelperArr);
                                 echo "您的Git Hub仓库代码超过500M！";
                                 die();
                             }
@@ -501,7 +503,8 @@
 
                         try {
                             $found = $repo->clone_remote($urlText);
-                        }catch (Exception $e) {   
+                        }catch (Exception $e) {
+                            $logger->log('debug', 'Git clone got exception: '.$e->getMessage(), $loghelperArr);   
                             print $e->getMessage();
                             chdir("..");
                             deldir($foldername);   
@@ -547,7 +550,7 @@
                         chdir("..");
 
                         if($existLincese == TRUE) {
-                            InsertStatusRecords($sessionId, "正在比较许可文件");
+                            InsertStatusRecords($sessionId, "正在比较许可文件", $conn);
 
                             $originalfilecontent = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
 
@@ -559,6 +562,9 @@
                                     array_push($keyFiles, $key);
                                 }
                             }
+
+                            $logger->log('debug', 'Picked up license files after git clone: ', $keyFiles);
+                            $logger->log('debug', 'The length of keyFiles after git clone: '.count($keyFiles), $loghelperArr);
 
                             if(count($keyFiles) == 0) {
                             echo "<div>
@@ -582,8 +588,8 @@
                                         <a href=\"www.google.com\">如何建立您的开源许可证?</a>
                                     </div>
                                 </div>";
-                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
-                            RemoveStatusRecords($sessionId);
+                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
+                            RemoveStatusRecords($sessionId, $conn);
                             die();
                         }
 
@@ -593,14 +599,16 @@
                             $minKey = 0;
                             $maxRatio = 0;
                             $maxKey = 0;
+
+                            $curl_resultProcessed = trim($originalfilecontent);
+                            $curl_resultProcessed = trim(preg_replace('/\s+/', ' ', $curl_resultProcessed));
+                            $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
+                            $curl_resultProcessed = htmlspecialchars_decode($curl_resultProcessed);
+
                             foreach($keyFiles as $key => $value) {
                                 $licenseProcessedFile = trim($licesnefilecomtents[$value]);
                                 $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
-                                $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licenseProcessedFile));
-
-                                $curl_resultProcessed = trim($originalfilecontent);
-                                $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
-                                $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $curl_resultProcessed));
+                                $licenseProcessedFile = trim(preg_replace('/\s+/', ' ', $licenseProcessedFile));
 
                                 array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
                                 if(LicenseDiff::$diffLength < $minDiff || $minDiff == 0) {
@@ -609,12 +617,12 @@
                                 }
                             }
 
+                            $logger->log('debug', 'The minimal key index in keyFiles after git clone: '.$minKey, $loghelperArr);
                             $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
                             
+                            if(verifyPass($comparedStandardLicenseFileContent, $licesnefilecomtents[$keyFiles[$minKey]])) {
 
-                            if(substr_count($comparedStandardLicenseFileContent, "<ins>") == 0 && substr_count($comparedStandardLicenseFileContent, "<del>") == 0) {
-
-                                InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                                InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
 
                                 echo "<div>
                                         <div id=\"checkwithfailed\">
@@ -639,10 +647,10 @@
                                 echo "</div>
                                         </div>
                                     </div>";
-                                RemoveStatusRecords($sessionId);
+                                RemoveStatusRecords($sessionId, $conn);
                             }
                             else {
-                                InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype);                          
+                                InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);                          
 
                                 echo "<div>
                                         <div id=\"checkwithfailed\">
@@ -669,14 +677,14 @@
                                 echo "</div>
                                         </div>
                                         </div>";
-                                RemoveStatusRecords($sessionId);
+                                RemoveStatusRecords($sessionId, $conn);
                             }
 
                             // remove the git folder downloaded
                             deldir($foldername);
                         }
                         else {
-                            InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype);                            
+                            InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);                            
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
@@ -699,7 +707,7 @@
                                         <a href=\"www.google.com\">如何建立您的开源许可证?</a>
                                     </div>
                                 </div>";
-                            RemoveStatusRecords($sessionId);
+                            RemoveStatusRecords($sessionId, $conn);
 
                             // remove the git folder downloaded
                             deldir($foldername);
@@ -707,7 +715,7 @@
                     }
                     break;
                 case "svn":
-                    InsertStatusRecords($sessionId, "正在探测许可文件");
+                    InsertStatusRecords($sessionId, "正在探测许可文件", $conn);
 
                     $fileList = SvnPeer::ls($urlText);
                     $fileList = explode("<br>", $fileList);
@@ -729,7 +737,7 @@
 
                     if($existLincese == TRUE) {
                         // Get file content from svn
-                        InsertStatusRecords($sessionId, "正在check out许可文件");
+                        InsertStatusRecords($sessionId, "正在check out许可文件", $conn);
 
                         $ran = rand();
                         $timeparts = explode(' ',microtime());
@@ -771,7 +779,7 @@
                         chdir("..");
                         chdir("..");
 
-                        InsertStatusRecords($sessionId, "正在比较许可文件");
+                        InsertStatusRecords($sessionId, "正在比较许可文件", $conn);
                         // Start compare license files
                         $originalfilecontent = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
 
@@ -806,8 +814,8 @@
                                         <a href=\"www.google.com\">如何建立您的开源许可证?</a>
                                     </div>
                                 </div>";
-                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
-                            RemoveStatusRecords($sessionId);
+                            InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
+                            RemoveStatusRecords($sessionId, $conn);
                             die();
                         }
 
@@ -817,10 +825,17 @@
                         $minKey = 0;
                         $maxRatio = 0;
                         $maxKey = 0;
+
+                        $curl_resultProcessed = trim($originalfilecontent);
+                        $curl_resultProcessed = trim(preg_replace('/\s+/', ' ', $curl_resultProcessed));
+                        $curl_resultProcessed = preg_replace('/s(?=s)/', '', $curl_resultProcessed);
+                        $curl_resultProcessed = htmlspecialchars_decode($curl_resultProcessed);
+
                         foreach($keyFiles as $key => $value) {
-                            str_replace("\\n", "", $licesnefilecomtents[$value]);
-                            $licenseProcessedFile = trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$value]));
-                            $curl_resultProcessed = trim(preg_replace('/\s\s+/', ' ', $originalfilecontent));
+                            $licenseProcessedFile = trim($licesnefilecomtents[$value]);
+                            $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
+                            $licenseProcessedFile = trim(preg_replace('/\s+/', ' ', $licenseProcessedFile));
+
                             array_push($diffOpcodeArr, LicenseDiff::compareLicense($licenseProcessedFile, $curl_resultProcessed));
                             if(LicenseDiff::$diffLength < $minDiff || $minDiff == 0) {
                                 $minDiff = LicenseDiff::$diffLength;
@@ -831,9 +846,9 @@
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
                             
 
-                        if(substr_count($comparedStandardLicenseFileContent, "<ins>") == 0 && substr_count($comparedStandardLicenseFileContent, "<del>") == 0) {
+                        if(verifyPass($comparedStandardLicenseFileContent, $licesnefilecomtents[$keyFiles[$minKey]])) {
 
-                            InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                            InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
@@ -858,10 +873,10 @@
                             echo "</div>
                                     </div>
                                 </div>";
-                            RemoveStatusRecords($sessionId);
+                            RemoveStatusRecords($sessionId, $conn);
                         }
                         else {
-                            InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype);                          
+                            InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);                      
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
@@ -888,7 +903,7 @@
                             echo "</div>
                                     </div>
                                     </div>";
-                            RemoveStatusRecords($sessionId);
+                            RemoveStatusRecords($sessionId, $conn);
                         }
 
                         // remove the git folder downloaded
@@ -897,7 +912,7 @@
                     }
                     else {
                         // Show No License Result
-                        InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype);
+                        InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn);
                         echo "<div>
                             <div id=\"checkwithfailed\">
                                 <span id=\"titleresult\">评估结果:</span>
@@ -919,7 +934,7 @@
                                 <a href=\"www.google.com\">如何建立您的开源许可证?</a>
                             </div>
                         </div>";
-                        RemoveStatusRecords($sessionId);                        
+                        RemoveStatusRecords($sessionId, $conn);                        
                     }                     
                     break;
                 }           
