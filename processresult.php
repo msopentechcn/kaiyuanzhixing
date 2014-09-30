@@ -55,7 +55,7 @@
         <?php
             require_once("util/Helper.php");
             require_once('licensediff.php');
-            require_once('util/git.php');
+            require_once('util/Git.php');
             require_once('util/SvnPeer.php');
             require_once('util/Logger.php');
 
@@ -295,7 +295,7 @@
                         $requests = array($tempURL, $lowerURL, $upperURL);
 
                         // Use multi-curl requests
-                        $main    = curl_multi_init();
+                        $main = curl_multi_init();
                         $results = array();
                         $count = count($requests);
                         for($i = 0; $i < $count; $i++) 

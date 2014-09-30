@@ -35,4 +35,25 @@
         
         return $json['size'];
     }
+
+    function verifyPass($diffresult, $origin) {
+        $oriLeft = substr_count($origin, '{{');
+        $oriRight = substr_count($origin, '}}');
+        if($oriLeft !== $oriRight) {
+            return FALSE;
+        }
+
+        $verifiedIns = substr_count($diffresult, '<ins>');
+        $verifiedDel = substr_count($diffresult, '<del>');
+
+        if($verifiedIns !== $verifiedDel) {
+            return FALSE;
+        }
+        
+        if($verifiedIns !== $oriLeft) {
+            return FALSE;
+        }
+
+        return TRUE;
+    }
 ?>
