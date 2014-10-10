@@ -192,7 +192,14 @@
             $sessionId = $_POST["sessionid"];
 
             // Initialize MySQL connection and query if it is allowed to verify
-            $conn = mysql_connect('localhost','root','') or die ("数据连接错误!!!");
+            $dbconf = file('../conf/db.json');
+            $dbjson = '';
+            foreach($dbconf as $line) {
+                $dbjson .= $line;
+            }
+            $decodedDbConf = json_decode($dbjson, TRUE);
+
+            $conn = mysql_connect($decodedDbConf['server'],$decodedDbConf['user'],$decodedDbConf['password']) or die ("数据连接错误!!!");
 
             InsertStatusRecords($sessionId, "正在初始化", $conn, $logger, $loghelperArr);
 
@@ -753,10 +760,6 @@
 
                     $fileList = SvnPeer::ls($urlText);
                     $fileList = explode("<br>", $fileList);
-
-                    foreach($fileList as $key => $value) {
-                        $logger->log('debug', "The SVN ls file[".$key."]: ".$value, $loghelperArr);
-                    }
 
                     $existLincese = FALSE;
 
