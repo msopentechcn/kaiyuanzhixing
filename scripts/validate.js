@@ -71,7 +71,9 @@ function validateFields() {
     }
 
     // Validate Verification Code
-    if($("#vericode").val() != $("#captchavalue").val()) {
+    var vericode = $("#vericode").val().toLowerCase();
+    var captchavalue = $("#captchavalue").val().toLowerCase();
+    if(vericode != captchavalue) {
         $("#wproVeri").text("验证码错误");
         $("#proname").parent().addClass("has-error");
         return false;
