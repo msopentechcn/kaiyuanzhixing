@@ -56,4 +56,14 @@
 
         return TRUE;
     }
+
+    function getKeywordsArray() {
+        $keywordsfilecontent = file('../conf/keywords.json');
+        $keywordsjson = '';
+        foreach($keywordsfilecontent as $line) {
+            $keywordsjson .= $line;
+        }
+        $decodedKeywordsCol = json_decode($keywordsjson, TRUE);
+        return $decodedKeywordsCol;
+    }
 ?>
