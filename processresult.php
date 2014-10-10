@@ -1,8 +1,3 @@
-<?php
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -237,7 +232,9 @@
 
             // Put license file patterns into array
             $licensepatterns = array('License', 'License.txt', 'License.md', 'Copying', 'Copying.txt', 'Copyright', 'Copyright.txt');
-            $licensedetectkeywords = array('Academic Free License', 'ADAPTIVE PUBLIC LICENSE', 'Apache License', 'Apache License', 'Apache License', 'APPLE PUBLIC SOURCE LICENSE', 'Artistic License 2.0', 'Attribution Assurance License', 'Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following', 'The authors of the CeCILL (for Ce[a] C[nrs] I[nria] L[ogiciel] L[ibre]) license are', '(The CNRI portion of the multi-part Python License.) (CNRI-Python)', 'COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL)', 'Common Public Attribution License Version 1.0', 'Computer Associates Trusted Open Source License', 'CUA Office Public License Version 1.0', 'Eclipse Public License, Version 1.0', 'Educational Community License, Version 2.0', 'Eiffel Forum License, version 2', 'Entessa Public License Version. 1.0', 'EU DataGrid Software License', 'The European Union Public License', 'Fair License', 'THE FRAMEWORX OPEN LICENSE 1.0', 'Copyright (C) 2007 Free Software Foundation, Inc.', 'The GNU General Public License', 'GNU GENERAL PUBLIC LICENSE', 'Historical Permission Notice and Disclaimer', 'IPA Font License Agreement v1.0', 'IBM Public License Version 1.0', 'Copyright (c) 4-digit year, Company or Person\'s Name', 'GNU Lesser General Public License', 'GNU LESSER GENERAL PUBLIC LICENSE', 'Lucent Public License Version 1.02', 'LPPL Version 1.3c 2008-05-04', 'To apply the template(1) specify the years of copyright (separated by comma, not as a range), the legal names of the copyright holders, and the real names of the authors if different. Avoid adding text.', 'The MIT License', 'MOTOSOTO OPEN SOURCE LICENSE', 'Mozilla Public License', 'This license governs use of the accompanying software', 'Historical Background', 'NASA OPEN SOURCE AGREEMENT VERSION 1.3', 'NAUMEN Public License', 'University of Illinois/NCSA Open Source License', 'Nethack General Public License', 'Nokia Open Source License', 'Non-Profit Open Software License 3.0', 'Copyright (c) (CopyrightHoldersName) (From 4-digit-year)-(To 4-digit-year)', 'OCLC Research Public License 2.0 License', 'Copyright (c) <dates>, <Copyright Holder>', 'The Open Group Test Suite License', 'Open Software License v. 3.0', 'The PHP License', 'This is a template license', 'Python License, Version 2', 'The Q Public License Version 1.0', 'Reciprocal Public License', 'RealNetworks Public Source License Version 1.0', 'Ricoh Source Code Public License', 'This Simple Public License 2.0', 'The Sleepycat License', 'SUN PUBLIC LICENSE Version 1.0', 'The BSD 2-Clause License', 'The BSD 3-Clause License', 'Vovida Software License v. 1.0', 'W3C? SOFTWARE NOTICE AND LICENSE', 'USE OF THE SYBASE OPEN WATCOM SOFTWARE DESCRIBED BELOW ("SOFTWARE")', 'The wxWindows Library Licence', 'The X.Net, Inc. License', 'The zlib/libpng License', 'Zope Public License (ZPL) Version 2.0');
+
+            // Load keywords from json file based on current license folder
+            $licensedetectkeywords = getKeywordsArray();
 
             $logger->log('debug', "Start loading license files at: ".date('Y-m-d H:i:s',time()), $loghelperArr);
 
@@ -384,7 +381,7 @@
 
                         $logger->log('debug', 'Picked up license files: ', $keyFiles);
                         foreach($keyFiles as $key => $value) {
-                            $logger->log('debug', 'Key file['.$key."]: ".$licensefilenames[$value]);
+                            $logger->log('debug', 'Key file['.$key."]: ".$value);
                         }
                         $logger->log('debug', 'The length of keyFiles: '.count($keyFiles), $loghelperArr);
 
@@ -428,7 +425,7 @@
                         $curl_resultProcessed = htmlspecialchars_decode($curl_resultProcessed);
 
                         foreach($keyFiles as $key => $value) {
-                            $licenseProcessedFile = trim($licesnefilecomtents[$value]);
+                            $licenseProcessedFile = trim($licensecollection[$value]);
                             $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
                             $licenseProcessedFile = trim(preg_replace('/\s+/', ' ', $licenseProcessedFile));
 
@@ -441,7 +438,7 @@
 
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
 
-                        if(verifyPass($comparedStandardLicenseFileContent, $licesnefilecomtents[$keyFiles[$minKey]])) {
+                        if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
 
                             echo "<div>
@@ -459,7 +456,7 @@
                             echo $urlText;
                             echo "</div>
                                         <div id=\"end-decl\">已经被评估符合";
-                            echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                             echo "感谢你对中国开源社的贡献！</div>
                                         <img src=\"images/opensource.png\" alt=\"\" />
                                         <div id=\"sigtime\">OSS alliance signature ";
@@ -479,7 +476,7 @@
                                     </div>
                                     <div id=\"declare\">
                                         <span>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
-                            echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                             echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
                                     </div>
                                     <div id=\"originaldiv\">
@@ -490,10 +487,10 @@
                                     </div>
                                     <div id=\"standarddiv\">
                                     <div>";
-                            echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                             echo "</div>
                                         <div id=\"standardcontent\"><pre>";
-                            echo htmlspecialchars($licesnefilecomtents[$keyFiles[$minKey]]);
+                            echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
                             echo "</pre></div>
                                     </div>
                                     </div>";
@@ -537,8 +534,7 @@
                         try {
                             $found = $repo->clone_remote($urlText);
                         }catch (Exception $e) {
-                            $logger->log('debug', 'Git clone got exception: '.$e->getMessage(), $loghelperArr);   
-                            print $e->getMessage();
+                            $logger->log('error', 'Git clone got exception: '.$e->getMessage(), $loghelperArr);   
                             chdir("..");
                             deldir($foldername);   
                             die();   
@@ -598,7 +594,7 @@
 
                             $logger->log('debug', 'Picked up license files after git clone: ', $keyFiles);
                             foreach($keyFiles as $key => $value) {
-                                $logger->log('debug', 'Key file['.$key."]: ".$licensefilenames[$value]);
+                                $logger->log('debug', 'Key file['.$key."]: ".$value);
                             }
                             $logger->log('debug', 'The length of keyFiles after git clone: '.count($keyFiles), $loghelperArr);
 
@@ -642,7 +638,7 @@
                             $curl_resultProcessed = htmlspecialchars_decode($curl_resultProcessed);
 
                             foreach($keyFiles as $key => $value) {
-                                $licenseProcessedFile = trim($licesnefilecomtents[$value]);
+                                $licenseProcessedFile = trim($licensecollection[$value]);
                                 $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
                                 $licenseProcessedFile = trim(preg_replace('/\s+/', ' ', $licenseProcessedFile));
 
@@ -656,7 +652,7 @@
                             $logger->log('debug', 'The minimal key index in keyFiles after git clone: '.$minKey, $loghelperArr);
                             $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
                             
-                            if(verifyPass($comparedStandardLicenseFileContent, $licesnefilecomtents[$keyFiles[$minKey]])) {
+                            if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
 
                                 InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
 
@@ -675,7 +671,7 @@
                                 echo $urlText;
                                 echo "</div>
                                             <div id=\"end-decl\">已经被评估符合";
-                                echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "感谢你对中国开源社的贡献！</div>
                                             <img src=\"images/opensource.png\" alt=\"\" />
                                             <div id=\"sigtime\">OSS alliance signature ";
@@ -695,7 +691,7 @@
                                         </div>
                                         <div id=\"declare\">
                                             <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
-                                echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
                                         </div>
                                         <div id=\"originaldiv\">
@@ -706,10 +702,10 @@
                                         </div>
                                         <div id=\"standarddiv\">
                                         <div>";
-                                echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
                                             <div id=\"standardcontent\">";
-                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]])), ENT_QUOTES);
+                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
                                 echo "</div>
                                         </div>
                                         </div>";
@@ -725,7 +721,7 @@
                             echo "<div>
                                     <div id=\"checkwithfailed\">
                                         <span id=\"titleresult\">评估结果:</span>
-                                        <span id=\"resultsentence\">没有许可证文件被发现</span>
+                                        <span id=\"resultsentence\">没有发现许可证文件</span>
                                     </div>
                                     <div id=\"declare\">
                                         <span>原因: 在您提供的代码仓库地址中没有发现许可证文件: </span>
@@ -766,10 +762,37 @@
 
                     foreach($fileList as $svnSingleFile) {
                         foreach($licensepatterns as $licenseSingleFile) {
+                            // Compare raw file names
                             if($svnSingleFile == $licenseSingleFile) {
                                 $existLincese = TRUE;
                                 $foundLinceseFile = $svnSingleFile;
-                                breank;
+                                break;
+                            }
+
+                            // Compare lower version of file names
+                            $comresult = stripos($licenseSingleFile, ".");
+                            if($comresult !== FALSE) {
+                                $pos1 = stripos($licenseSingleFile, '.');
+                                $sub1 = substr($licenseSingleFile, 0, $pos1);
+                                $sub2 = substr($licenseSingleFile, $pos1);
+                                $result = strtoupper($sub1).$sub2;
+                            }
+                            else {
+                                $result = strtolower($licenseSingleFile);
+                            }
+
+                            if($svnSingleFile == $result) {
+                                $existLincese = TRUE;
+                                $foundLinceseFile = $svnSingleFile;
+                                break;
+                            }
+
+                            // Compare upper version of file names
+                            $result = strtoupper($licenseSingleFile);
+                            if($svnSingleFile == $result) {
+                                $existLincese = TRUE;
+                                $foundLinceseFile = $svnSingleFile;
+                                break;
                             }
                         }
                         if($existLincese == TRUE) {
@@ -837,7 +860,7 @@
 
                         $logger->log('debug', 'Picked up license files after git clone: ', $keyFiles);
                         foreach($keyFiles as $key => $value) {
-                            $logger->log('debug', 'Key file['.$key."]: ".$licensefilenames[$value]);
+                            $logger->log('debug', 'Key file['.$key."]: ".$value);
                         }
                         $logger->log('debug', 'The length of keyFiles after git clone: '.count($keyFiles), $loghelperArr);
 
@@ -881,7 +904,7 @@
                         $curl_resultProcessed = htmlspecialchars_decode($curl_resultProcessed);
 
                         foreach($keyFiles as $key => $value) {
-                            $licenseProcessedFile = trim($licesnefilecomtents[$value]);
+                            $licenseProcessedFile = trim($licensecollection[$value]);
                             $licenseProcessedFile = preg_replace('/s(?=s)/', '', $licenseProcessedFile);
                             $licenseProcessedFile = trim(preg_replace('/\s+/', ' ', $licenseProcessedFile));
 
@@ -895,7 +918,7 @@
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
                             
 
-                        if(verifyPass($comparedStandardLicenseFileContent, $licesnefilecomtents[$keyFiles[$minKey]])) {
+                        if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
 
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
 
@@ -914,7 +937,7 @@
                             echo $urlText;
                             echo "</div>
                                         <div id=\"end-decl\">已经被评估符合";
-                            echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                             echo "感谢你对中国开源社的贡献！</div>
                                         <img src=\"images/opensource.png\" alt=\"\" />
                                         <div id=\"sigtime\">OSS alliance signature ";
@@ -934,7 +957,7 @@
                                     </div>
                                     <div id=\"declare\">
                                         <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
-                            echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                             echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
                                     </div>
                                     <div id=\"originaldiv\">
@@ -945,10 +968,10 @@
                                     </div>
                                     <div id=\"standarddiv\">
                                     <div>";
-                            echo substr($licensefilenames[$keyFiles[$minKey]], 0, strrpos($licensefilenames[$keyFiles[$minKey]], "."));
+                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                             echo "</div>
                                         <div id=\"standardcontent\">";
-                            echo trim(preg_replace('/\s\s+/', ' ', $licesnefilecomtents[$keyFiles[$minKey]]));
+                            echo trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]]));
                             echo "</div>
                                     </div>
                                     </div>";
@@ -966,7 +989,7 @@
                         echo "<div>
                             <div id=\"checkwithfailed\">
                                 <span id=\"titleresult\">评估结果:</span>
-                                <span id=\"resultsentence\">没有许可证文件被发现</span>
+                                <span id=\"resultsentence\">没有发现许可证文件</span>
                             </div>
                             <div id=\"declare\">
                                 <span>原因: 在您提供的代码仓库地址中没有发现许可证文件: </span>
