@@ -1,5 +1,6 @@
 $(document).ready(function () {
-	
+    $("#projsite").val('http://');
+    $("#reprou").val('http://');
 });
 
 function validateFields() {
