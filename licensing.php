@@ -97,7 +97,7 @@
 			                <?php
 				                echo '<img id="capchaimg" src="' . $_SESSION['captcha']['image_src'] . '" alt="CAPTCHA code">';
 			                ?>
-                            <span id="wproVeri"></span>
+                            <span>看不清？点击图片</span><span id="wproVeri"></span>
                         </div>
                         <div class="article-block input-bottom">
 			                <input type="checkbox" name="termagree" id="term" value="agree"><span id="declare">我已阅读<a href="#">《个人声明》</a>，并保证遵守开源社网站规范</span>
