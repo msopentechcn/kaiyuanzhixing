@@ -3,35 +3,49 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="description" content="validationtool">
         <meta name="keywords" content="validationtool">
 
         <link rel="stylesheet" type="text/css" href="css/validateresults.css">
-        <link href="css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
-		<link href="css/2stage.css" rel="stylesheet">
+        <!--<link href="css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
+		<link href="css/2stage.css" rel="stylesheet">-->
+
+        <link href="/templates/hli/css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
+	    <link href="/templates/hli/css/2stage.css" rel="stylesheet">
 
         <title>评估结果</title>
+        <script src="scripts/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="/templates/hli/js/base.js"></script>
         
     </head>
     <body>
         <div class="wrapper">
             <div class="header">
                 <div class="container">
-                    <div class="navbar-logo">开源社</div>
+                    <div class="navbar-logo"><a href="/index.php"><img src="/templates/hli/css/images/logo.png" height="55"></a></div>
                     <div class="navbar-collapse">
+                        <ul class="navbar-nav touch-menu">
+                            <li><span class="glyphicon glyphicon-th" id="touch-menu-btn"></span></li>
+                        </ul>
+
                         <ul class="navbar-nav navbar-list">
                             <li>
-                                <a href="index.html">主页</a>
+                                <a href="/index.php">主页</a>
                             </li>
                             <li class="active">
-                                <a href="validationtool.php">开源许可评估</a>
+                                <a href="/ossstar/licensing.php">开源之星计划</a>
                             </li>
+                            <li ><a href="/index.php?option=com_content&view=category&id=8">开源参考文档</a></li>
+                            <li class=""><a href="/ambassador.php">开源大使计划</a></li>
+                            <li><a href="/about.html">关于我们</a></li>
+                        </ul>
+                        <ul class="navbar-nav navbar-search">
                             <li>
-                                <a href="license.html">开源许可证</a>
-                            </li>
-                            <li>
-                                <a href="/#">关于我们</a>
+                                <form id="search-form" class="search-form" action="">
+                                    <input type="text" placeholder="search">
+                                    <span class="glyphicon glyphicon-search search-form-submit"></span>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -47,6 +61,7 @@
             </div>
         </div>
 
+        <div class="container">
         <?php
             require_once("util/Helper.php");
             require_once('licensediff.php');
@@ -492,8 +507,9 @@
                                     <br>我们会稍后评估并补充许可证文件库</div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
@@ -564,6 +580,7 @@
                                 <p class=\"date\">";
                             echo $certDate; 
                             echo "</p>
+                            <div><a href=\"/ossstar/licensing.php\">完成</a></div>
                                     </div>
                                 </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -579,7 +596,7 @@
                                     <div id=\"declare\">
                                         <span>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                             echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                            echo "许可证文件内容, 详细文本之间的差别请看下面, 其中<span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表增加, <span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表减少</span>:</span>
                                     </div>
                                     <div id=\"originaldiv\">
                                         <div>您的许可证比较结果</div>
@@ -594,6 +611,7 @@
                                         <div id=\"standardcontent\"><pre>";
                             echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
                             echo "</pre></div>
+                            <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                     </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -656,8 +674,9 @@
                                 </div>
                                 <div id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                 </div>
                             </div>";   
                             die();   
@@ -739,8 +758,9 @@
                                     <br>我们会稍后评估并补充许可证文件库</div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
@@ -812,6 +832,7 @@
                                     <p class=\"date\">";
                                 echo $certDate; 
                                 echo "</p>
+                                <div><a href=\"/ossstar/licensing.php\">完成</a></div>
                                         </div>
                                     </div>";
                                 RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -827,7 +848,7 @@
                                         <div id=\"declare\">
                                             <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                                echo "许可证文件内容, 详细文本之间的差别请看下面, 其中<span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表增加, <span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表减少</span>:</span>
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
@@ -842,6 +863,7 @@
                                             <div id=\"standardcontent\">";
                                 echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
                                 echo "</div>
+                                <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                         </div>
                                         </div>";
                                 RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -870,8 +892,9 @@
                                     </div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -969,8 +992,9 @@
                                 </div>
                                 <div id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                 </div>
                             </div>";
                             die();
@@ -1001,8 +1025,9 @@
                                 </div>
                                 <div id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                 </div>
                             </div>";
                             die();
@@ -1055,8 +1080,9 @@
                                     <br>我们会稍后评估并补充许可证文件库</div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
@@ -1128,6 +1154,7 @@
                                 <p class=\"date\">";
                             echo $certDate; 
                             echo "</p>
+                            <div><a href=\"/ossstar/licensing.php\">完成</a></div>
                                     </div>
                                 </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -1143,7 +1170,7 @@
                                     <div id=\"declare\">
                                         <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                             echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                            echo "许可证文件内容, 详细文本之间的差别请看下面, 其中<span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表增加, <span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表减少</span>:</span>
                                     </div>
                                     <div id=\"originaldiv\">
                                         <div>您的许可证比较结果</div>
@@ -1158,6 +1185,7 @@
                                         <div id=\"standardcontent\">";
                             echo trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]]));
                             echo "</div>
+                            <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                     </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -1188,8 +1216,9 @@
                             </div>
                             <div id=\"moreinfo\">
                                 <span>请参考下面的链接:</span><br>
-                                <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
-                                <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                <a href=\"#\">如何建立您的许可证文件?</a><br>
+                                <a href=\"#\">如何建立您的开源许可证?</a>
+                                <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                             </div>
                         </div>";
                         RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);                        
@@ -1197,5 +1226,12 @@
                     break;
                 }           
         ?>
+
+            </div>
+        </div>
+            <div class="footer">
+                <div class="container"><a href="/about.html">联系我们</a> | <a href="/index.php" target="_blank">隐私条款</a> | <a href="/index.php" target="_blank">使用条款</a> | 京ICP备<a href="http://www.miibeian.gov.cn/" target="_blank">14047895</a>号</div>
+            </div>
+        </div>
     </body>
 </html>
