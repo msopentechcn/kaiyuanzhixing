@@ -1,6 +1,21 @@
 $(document).ready(function () {
     $("#projsite").val('http://');
     $("#reprou").val('http://');
+
+    $("#capchaimg").bind("click", function(){
+        
+        $.ajax({
+            type: "get",
+            url: "getcaptcha.php",
+            dataType: "json",  
+            data: '',  
+            success: function(response){  
+                $("#capchaimg").attr("src", response.image_src);
+                $("#captchavalue").val(response.code);
+            }
+        })     
+        
+    });
 });
 
 function validateFields() {
