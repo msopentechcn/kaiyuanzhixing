@@ -509,6 +509,7 @@
                                         <span>请参考下面的链接:</span><br>
                                         <a href=\"#\">如何建立您的许可证文件?</a><br>
                                         <a href=\"#\">如何建立您的开源许可证?</a>
+                                        如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
                                         <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
@@ -612,6 +613,7 @@
                                         <div id=\"standardcontent\"><pre>";
                             echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
                             echo "</pre></div>
+                            <div>如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a></div>
                             <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                     </div>";
@@ -677,6 +679,7 @@
                                     <span>请参考下面的链接:</span><br>
                                     <a href=\"#\">如何建立您的许可证文件?</a><br>
                                     <a href=\"#\">如何建立您的开源许可证?</a>
+                                    如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
                                     <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                 </div>
                             </div>";   
@@ -761,6 +764,7 @@
                                         <span>请参考下面的链接:</span><br>
                                         <a href=\"#\">如何建立您的许可证文件?</a><br>
                                         <a href=\"#\">如何建立您的开源许可证?</a>
+                                        如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
                                         <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
@@ -865,6 +869,7 @@
                                             <div id=\"standardcontent\">";
                                 echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
                                 echo "</div>
+                                <div>如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a></div>
                                 <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                         </div>
                                         </div>";
@@ -896,6 +901,7 @@
                                         <span>请参考下面的链接:</span><br>
                                         <a href=\"#\">如何建立您的许可证文件?</a><br>
                                         <a href=\"#\">如何建立您的开源许可证?</a>
+                                        如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
                                         <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
@@ -1190,6 +1196,7 @@
                                         <div id=\"standardcontent\">";
                             echo trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]]));
                             echo "</div>
+                            <div>如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a></div>
                             <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                     </div>";
