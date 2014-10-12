@@ -550,12 +550,14 @@
                             InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
                             $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                             $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
+                            $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
+                                    <div>永久Link: <a href='http://kaiyuanshe.chinacloudapp.cn/ossstar/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
                                     <div class=\"star-content\">
                                         <div class=\"left-arrow\"></div>
                                         <div class=\"right-arrow\"></div>
@@ -806,12 +808,14 @@
                                 InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
                                 $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                                 $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
+                                $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
 
                                 echo "<div>
                                         <div id=\"checkwithfailed\">
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentencepass\">评估通过!</span>
                                         </div>
+                                        <div>永久Link: <a href='http://kaiyuanshe.chinacloudapp.cn/ossstar/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
                                         <div class=\"star-content\">
                                             <div class=\"left-arrow\"></div>
                                             <div class=\"right-arrow\"></div>
@@ -1133,12 +1137,14 @@
                             InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
                             $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                             $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
+                            $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
+                                    <div>永久Link: <a href='http://kaiyuanshe.chinacloudapp.cn/ossstar/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
                                     <div class=\"star-content\">
                                         <div class=\"left-arrow\"></div>
                                         <div class=\"right-arrow\"></div>
