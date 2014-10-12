@@ -421,7 +421,7 @@
                             $result = strtolower($singlefile);
                         }
                         $lowerURL = $urlTextRaw."/".$result;
-                        $upperURL = $urlTextRaw."/".strtoupper($singlefile);
+                        $upperURL = $urlTextRaw."/".strtolower($singlefile);
                         $requests = array($tempURL, $lowerURL, $upperURL);
 
                         // Use multi-curl requests
@@ -943,8 +943,8 @@
                                 break;
                             }
 
-                            // Compare upper version of file names
-                            $result = strtoupper($licenseSingleFile);
+                            // Compare lower version of file names
+                            $result = strtolower($licenseSingleFile);
                             if($svnSingleFile == $result) {
                                 $existLincese = TRUE;
                                 $foundLinceseFile = $svnSingleFile;

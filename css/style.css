@@ -95,8 +95,8 @@ select {
   position: absolute;
   left: 0px;
   top: 0px;
-  width:100%;
-  height:100%;
+  width: auto;
+  height: auto;
   z-index: 1000;
   background: gray;
   zoom: 1;
