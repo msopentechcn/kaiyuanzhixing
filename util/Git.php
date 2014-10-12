@@ -417,7 +417,7 @@ class GitRepo {
 	 * @return  string
 	 */
 	public function clone_remote($source) {
-		return $this->run("clone $source ".$this->repo_path);
+		return $this->run("clone --depth 1 $source ".$this->repo_path);
 	}
 
 	/**
