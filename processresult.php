@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -638,7 +638,28 @@
                         }catch (Exception $e) {
                             $logger->log('error', 'Git clone got exception: '.$e->getMessage(), $loghelperArr);   
                             chdir("..");
-                            deldir($foldername);   
+                            deldir($foldername);
+                            echo "<div>
+                                <div id=\"checkwithfailed\">
+                                    <span id=\"titleresult\">评估结果:</span>
+                                    <span id=\"resultsentence\">没有发现许可证文件</span>
+                                </div>
+                                <div id=\"declare\">
+                                    <span>原因: 在您提供的代码仓库地址中没有发现许可证文件: </span>
+                                </div>
+                                <div id=\"sourlink\">
+                                    <a href=\""; 
+                            echo $urlText; 
+                            echo "\">";
+                            echo $urlText; 
+                            echo "</a>
+                                </div>
+                                <div id=\"moreinfo\">
+                                    <span>请参考下面的链接:</span><br>
+                                    <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                </div>
+                            </div>";   
                             die();   
                         }
 
@@ -931,6 +952,27 @@
                             $logger->log('error', 'SVN command "svn co ... target --depth empty" got exception: '.$e->getMessage(), $loghelperArr);
                             chdir("..");
                             deldir($foldername);
+                            echo "<div>
+                                <div id=\"checkwithfailed\">
+                                    <span id=\"titleresult\">评估结果:</span>
+                                    <span id=\"resultsentence\">没有发现许可证文件</span>
+                                </div>
+                                <div id=\"declare\">
+                                    <span>原因: 在您提供的代码仓库地址中没有发现许可证文件: </span>
+                                </div>
+                                <div id=\"sourlink\">
+                                    <a href=\""; 
+                            echo $urlText; 
+                            echo "\">";
+                            echo $urlText; 
+                            echo "</a>
+                                </div>
+                                <div id=\"moreinfo\">
+                                    <span>请参考下面的链接:</span><br>
+                                    <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                </div>
+                            </div>";
                             die();
                         }                      
                         chdir("target");
@@ -942,6 +984,27 @@
                             chdir("..");
                             chdir("..");
                             deldir($foldername);
+                            echo "<div>
+                                <div id=\"checkwithfailed\">
+                                    <span id=\"titleresult\">评估结果:</span>
+                                    <span id=\"resultsentence\">没有发现许可证文件</span>
+                                </div>
+                                <div id=\"declare\">
+                                    <span>原因: 在您提供的代码仓库地址中没有发现许可证文件: </span>
+                                </div>
+                                <div id=\"sourlink\">
+                                    <a href=\""; 
+                            echo $urlText; 
+                            echo "\">";
+                            echo $urlText; 
+                            echo "</a>
+                                </div>
+                                <div id=\"moreinfo\">
+                                    <span>请参考下面的链接:</span><br>
+                                    <a href=\"www.google.com\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"www.google.com\">如何建立您的开源许可证?</a>
+                                </div>
+                            </div>";
                             die();
                         }
 
