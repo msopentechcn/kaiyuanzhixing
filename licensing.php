@@ -100,7 +100,7 @@
                             <span id="wproVeri"></span>
                         </div>
                         <div class="article-block input-bottom">
-			                <input type="checkbox" name="termagree" id="term" value="agree"><span id="declare">我已阅读<a href="http://www.google.com">《个人声明》</a>，并保证遵守开源社网站规范</span>
+			                <input type="checkbox" name="termagree" id="term" value="agree"><span id="declare">我已阅读<a href="#">《个人声明》</a>，并保证遵守开源社网站规范</span>
                         </div>
                         <div class="article-block input-bottom">
 			                <input class="btn btn-primary" type="submit" value="提交" id="sub" onclick="return validateFields()">
