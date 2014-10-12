@@ -162,6 +162,88 @@
                 }
             }
 
+            function GetCertDate($urlText, $projectname, $proVer, $conn, $logger, $loghelperArr) {
+                $urlText = trim($urlText);
+                $sqlComm = "select timeLastVisit from kys.checkpasshistory where RepoURLs = \"".$urlText."\" and chVersion = \"".$proVer."\" and chProName = \"".$projectname."\"";
+                try{
+                   $result = mysql_query($sqlComm, $conn); 
+                }catch(Exception $e) {
+                   $logger->log('error', 'Get cerID from kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr); 
+                }
+                $row = mysql_fetch_array($result, MYSQL_NUM);
+
+                $dtLastTime = $row[0];
+                return $dtLastTime;
+            }
+
+            function GetCertID($urlText, $projectname, $proVer, $conn, $logger, $loghelperArr) {
+                $urlText = trim($urlText);
+                $sqlComm = "select cerID from kys.checkpasshistory where RepoURLs = \"".$urlText."\" and chVersion = \"".$proVer."\" and chProName = \"".$projectname."\"";
+                try{
+                   $result = mysql_query($sqlComm, $conn); 
+                }catch(Exception $e) {
+                   $logger->log('error', 'Get cerID from kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr); 
+                }
+                $row = mysql_fetch_array($result, MYSQL_NUM);
+
+                $certID = $row[0];
+                return $certID;
+            }
+
+            function InsertPassRecords($urlText, $validationresult, $projectname, $projectsite, $projectversion, $clientip, $repotype, $conn, $logger, $loghelperArr) {
+                $sqlComm = "select cerID from kys.checkpasshistory where RepoURLs = \"".$urlText."\" and chVersion = \"".$projectversion."\" and chProName = \"".$projectname."\"";
+                try{
+                   $result = mysql_query($sqlComm, $conn); 
+                }catch(Exception $e) {
+                   $logger->log('error', 'Get cerID from kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr); 
+                }
+                $row = mysql_fetch_array($result, MYSQL_NUM);
+
+                $certID = $row[0];
+                if($certID == '') {
+                    // Get latest certID
+                    $sqlComm = "select cerID from kys.checkpasshistory order by cerID desc LIMIT 1";
+                    try{
+                        $result = mysql_query($sqlComm, $conn);
+                    }catch(Exception $e) {
+                        $logger->log('error', 'Get latest cerID from kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr);
+                    }
+                    $latestTime = date('y-m-d h:i:s',time());
+                    $row = mysql_fetch_array($result, MYSQL_NUM);
+                    $latestCertID = $row[0];
+                    if($latestCertID == '') {
+                        $latestCertID = '000001';
+                        
+                        $sqlComm = "insert into kys.checkpasshistory(RepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType, cerID) values(\"".$urlText."\", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\", \"".$latestCertID."\")";
+
+                        try{
+                            $result = mysql_query($sqlComm, $conn);
+                        }catch(Exception $e) {
+                            $logger->log('error', 'Insert latest cerID into kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr);
+                        }
+                    }else {
+                        $latestCertID = $latestCertID + 1;
+                        $len = strlen($latestCertID);
+                        $tmp = '';
+                        if($len < 6) {
+                            for($i = 0; $i < 6 - $len; $i++) {
+                                $tmp .= '0';
+                            }
+                            $tmp = $tmp.$latestCertID;
+                            $latestCertID = $tmp;
+                        }
+
+                        $sqlComm = "insert into kys.checkpasshistory(RepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType, cerID) values(\"".$urlText."\", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\", \"".$latestCertID."\")";
+
+                        try{
+                            $result = mysql_query($sqlComm, $conn);
+                        }catch(Exception $e) {
+                            $logger->log('error', 'Insert latest cerID into kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr);
+                        }
+                    }
+                }
+            }
+
             // Validate the variables from POST request
             if($_POST["projectname"] == "") {
                 echo "缺少项目名称";
@@ -201,7 +283,7 @@
 
             $conn = mysql_connect($decodedDbConf['server'],$decodedDbConf['user'],$decodedDbConf['password']) or die ("数据连接错误!!!");
 
-            InsertStatusRecords($sessionId, "正在初始化", $conn, $logger, $loghelperArr);
+            InsertStatusRecords($sessionId, "正在探测许可证文件", $conn, $logger, $loghelperArr);
 
             $urlText = $_POST["reprourl"];
 
@@ -446,29 +528,42 @@
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
 
                         if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
+
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                            InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                            $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
+                            $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
-                                    <div id=\"suball\">
-                                        <img src=\"images/osi-certified.png\" alt=\"\"/>
-                                        <div id=\"decl\">许可评估成功</div>
-                                        <div id=\"project-name\">";
+                                    <div class=\"star-content\">
+                                        <div class=\"left-arrow\"></div>
+                                        <div class=\"right-arrow\"></div>
+                                        <div class=\"star-inner\">
+                                            <div class=\"star-badge\"></div>
+                                            <div class=\"star-text\">
+                                                <h1>开源之星认证</h1>
+                                                <h2>";
                             echo $proName;
-                            echo "</div>
-                                        <div id=\"repo-path\">";
+                            echo "</h2>
+                                        <p class=\"address\">源代码库地址：";
                             echo $urlText;
-                            echo "</div>
-                                        <div id=\"end-decl\">已经被评估符合";
+                            echo "</p>
+                                        <p id=\"result\">经验证符合";
                             echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "感谢你对中国开源社的贡献！</div>
-                                        <img src=\"images/opensource.png\" alt=\"\" />
-                                        <div id=\"sigtime\">OSS alliance signature ";
-                            echo date('Y-m-d H:i:s',time()); 
-                            echo "</div>
+                            echo "的标准</p><p class=\"thanks\">感谢您对中国开源社区的贡献！</p>
+                                        </div>
+                                        <div class=\"star-footer\">
+                                            <div class=\"logo\"></div>
+                                            <p class=\"number\">NO.";
+                            echo $certID;
+                            echo "</p>
+                                <p class=\"date\">";
+                            echo $certDate; 
+                            echo "</p>
                                     </div>
                                 </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -506,7 +601,7 @@
                     }
                     else {
                         $logger->log('debug', 'License file not found', $loghelperArr);
-                        InsertStatusRecords($sessionId, "未发现许可文件，正在Git Clone代码仓库副本", $conn, $logger, $loghelperArr);
+                        InsertStatusRecords($sessionId, "未发现许可文件，正在克隆代码仓库副本", $conn, $logger, $loghelperArr);
 
                         // Git clone the repository based on git URL
 
@@ -662,28 +757,40 @@
                             if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
 
                                 InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                                InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                                $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
+                                $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
 
                                 echo "<div>
                                         <div id=\"checkwithfailed\">
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentencepass\">评估通过!</span>
                                         </div>
-                                        <div id=\"suball\">
-                                            <img src=\"images/osi-certified.png\" alt=\"\"/>
-                                            <div id=\"decl\">许可评估成功</div>
-                                            <div id=\"project-name\">";
+                                        <div class=\"star-content\">
+                                            <div class=\"left-arrow\"></div>
+                                            <div class=\"right-arrow\"></div>
+                                            <div class=\"star-inner\">
+                                                <div class=\"star-badge\"></div>
+                                                <div class=\"star-text\">
+                                                    <h1>开源之星认证</h1>
+                                                    <h2>";
                                 echo $proName;
-                                echo "</div>
-                                            <div id=\"repo-path\">";
+                                echo "</h2>
+                                            <p class=\"address\">源代码库地址：";
                                 echo $urlText;
-                                echo "</div>
-                                            <div id=\"end-decl\">已经被评估符合";
+                                echo "</p>
+                                            <p id=\"result\">经验证符合";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                                echo "感谢你对中国开源社的贡献！</div>
-                                            <img src=\"images/opensource.png\" alt=\"\" />
-                                            <div id=\"sigtime\">OSS alliance signature ";
-                                echo date('Y-m-d H:i:s',time()); 
-                                echo "</div>
+                                echo "的标准</p><p class=\"thanks\">感谢您对中国开源社区的贡献！</p>
+                                            </div>
+                                            <div class=\"star-footer\">
+                                                <div class=\"logo\"></div>
+                                                <p class=\"number\">NO.";
+                                echo $certID;
+                                echo "</p>
+                                    <p class=\"date\">";
+                                echo $certDate; 
+                                echo "</p>
                                         </div>
                                     </div>";
                                 RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -924,28 +1031,40 @@
                         if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
 
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                            InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                            $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
+                            $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
 
                             echo "<div>
                                     <div id=\"checkwithfailed\">
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
-                                    <div id=\"suball\">
-                                        <img src=\"images/osi-certified.png\" alt=\"\"/>
-                                        <div id=\"decl\">许可评估成功</div>
-                                        <div id=\"project-name\">";
+                                    <div class=\"star-content\">
+                                        <div class=\"left-arrow\"></div>
+                                        <div class=\"right-arrow\"></div>
+                                        <div class=\"star-inner\">
+                                            <div class=\"star-badge\"></div>
+                                            <div class=\"star-text\">
+                                                <h1>开源之星认证</h1>
+                                                <h2>";
                             echo $proName;
-                            echo "</div>
-                                        <div id=\"repo-path\">";
+                            echo "</h2>
+                                        <p class=\"address\">源代码库地址：";
                             echo $urlText;
-                            echo "</div>
-                                        <div id=\"end-decl\">已经被评估符合";
+                            echo "</p>
+                                        <p id=\"result\">经验证符合";
                             echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "感谢你对中国开源社的贡献！</div>
-                                        <img src=\"images/opensource.png\" alt=\"\" />
-                                        <div id=\"sigtime\">OSS alliance signature ";
-                            echo date('Y-m-d H:i:s',time()); 
-                            echo "</div>
+                            echo "的标准</p><p class=\"thanks\">感谢您对中国开源社区的贡献！</p>
+                                        </div>
+                                        <div class=\"star-footer\">
+                                            <div class=\"logo\"></div>
+                                            <p class=\"number\">NO.";
+                            echo $certID;
+                            echo "</p>
+                                <p class=\"date\">";
+                            echo $certDate; 
+                            echo "</p>
                                     </div>
                                 </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);

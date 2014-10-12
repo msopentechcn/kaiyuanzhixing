@@ -80,7 +80,7 @@
                         <div class="article-block input-bottom">
                             <p>项目主站</p>
                             <input class="form-control" type="text" name="projectsite" id="projsite">
-                            <span id="wproSite">http(s)  *</span>
+                            <span id="wproSite">*</span>
                         </div>
                         <div class="article-block input-bottom">
                             <p>源代码仓库URL</p>

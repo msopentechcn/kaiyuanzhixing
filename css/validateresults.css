@@ -105,3 +105,96 @@ textarea {
     padding-left: 150px;
     margin: 5px;
 }
+
+.star-content {
+    margin-top: 30px;
+    padding: 0 50px;
+    height: 860px;
+    border: 1px solid #000;
+    background: url('/css/images/wenli-bg.png');
+}
+
+.left-arrow {
+    float: left;
+    margin-left: -50px;
+    width: 50px;
+    height: 100%;
+    background: url('/css/images/star-left-Arrow.png');
+}
+
+.right-arrow {
+    float: right;
+    margin-right: -50px;
+    width: 50px;
+    height: 100%;
+    background: url('/css/images/star-right-Arrow.png');
+}
+
+.star-inner {
+    text-align: center;
+}
+
+.star-badge {
+    margin-left: auto;
+    margin-right: auto;
+    width: 462px;
+    height: 318px;
+    background: url('/css/images/star-badge.png');
+}
+
+.star-text h1 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-top: 10px;
+    letter-spacing: 4px;
+}
+
+.star-text h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-top: 44px;
+}
+
+.star-text .address {
+    margin-top: -7px;
+    font-size: 28px;
+}
+
+.star-text .result {
+    font-size: 28px;
+}
+
+.star-text .thanks {
+    margin-top: -18px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.star-footer {
+    position: relative;
+}
+
+.star-footer .logo {
+    position: absolute;
+    right: 40px;
+    top: 50px;
+    width: 210px;
+    height: 72px;
+    background: url('/css/images/logo-star.png');
+}
+
+.star-footer .number {
+    position: absolute;
+    top: 124px;
+    left: 40px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.star-footer .date {
+    position: absolute;
+    top: 124px;
+    right: 40px;
+    font-size: 28px;
+    font-weight: 600;
+}
