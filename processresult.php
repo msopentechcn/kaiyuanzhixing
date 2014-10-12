@@ -8,11 +8,11 @@
         <meta name="keywords" content="validationtool">
 
         <link rel="stylesheet" type="text/css" href="css/validateresults.css">
-        <!--<link href="css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
-		<link href="css/2stage.css" rel="stylesheet">-->
+        <link href="css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
+		<link href="css/2stage.css" rel="stylesheet">
 
-        <link href="/templates/hli/css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
-	    <link href="/templates/hli/css/2stage.css" rel="stylesheet">
+        <!--<link href="/templates/hli/css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
+	    <link href="/templates/hli/css/2stage.css" rel="stylesheet">-->
 
         <title>评估结果</title>
         <script src="scripts/jquery-1.9.1.js" type="text/javascript"></script>
@@ -596,7 +596,8 @@
                                     <div id=\"declare\">
                                         <span>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                             echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "许可证文件内容, 详细文本之间的差别请看下面, 其中<span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表增加, <span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表减少</span>:</span>
+                            echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                            <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
                                     </div>
                                     <div id=\"originaldiv\">
                                         <div>您的许可证比较结果</div>
@@ -848,7 +849,8 @@
                                         <div id=\"declare\">
                                             <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                                echo "许可证文件内容, 详细文本之间的差别请看下面, 其中<span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表增加, <span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表减少</span>:</span>
+                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                                <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
@@ -953,6 +955,8 @@
                             break;
                         }
                     }
+
+
 
                     if($existLincese == TRUE) {
                         $logger->log('debug', 'License file found', $loghelperArr);
@@ -1170,7 +1174,8 @@
                                     <div id=\"declare\">
                                         <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                             echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "许可证文件内容, 详细文本之间的差别请看下面, 其中<span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表增加, <span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表减少</span>:</span>
+                            echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                            <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
                                     </div>
                                     <div id=\"originaldiv\">
                                         <div>您的许可证比较结果</div>
