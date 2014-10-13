@@ -418,7 +418,7 @@
                             $result = strtoupper($sub1).$sub2;
                         }
                         else {
-                            $result = strtolower($singlefile);
+                            $result = strtoupper($singlefile);
                         }
                         $lowerURL = $urlTextRaw."/".$result;
                         $upperURL = $urlTextRaw."/".strtolower($singlefile);
@@ -944,7 +944,7 @@
                                 $result = strtoupper($sub1).$sub2;
                             }
                             else {
-                                $result = strtolower($licenseSingleFile);
+                                $result = strtoupper($licenseSingleFile);
                             }
 
                             if($svnSingleFile == $result) {
