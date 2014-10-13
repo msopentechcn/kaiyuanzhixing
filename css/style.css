@@ -95,13 +95,13 @@ select {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: auto;
-  height: auto;
+  right: 0px;
+  bottom: 0px;
   z-index: 1000;
   background: gray;
-  zoom: 1;
+  zoom: 1000;
   filter: alpha(opacity=80);
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 #statusdialog {
