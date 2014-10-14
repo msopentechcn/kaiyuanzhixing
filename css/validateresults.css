@@ -22,11 +22,15 @@ textarea {
     height: 400px
 }
 
+.container {
+    font-size: 16px;
+}
+
 #declare {
     width: 800px;
-    padding-left: 150px;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-left: 5px;
 }
 
 #titleresult {
@@ -59,7 +63,10 @@ textarea {
 
 #checkwithfailed {
     padding-top: 50px;
-    padding-left: 150px
+}
+
+.permanent-link {
+    font-size: 18px;
 }
 
 #originaldiv {
@@ -97,12 +104,10 @@ textarea {
 }
 
 #sourlink {
-    padding-left: 150px;
-    margin: 5px;
+    margin: -10px 5px 5px 0;
 }
 
 #moreinfo {
-    padding-left: 150px;
     margin: 5px;
 }
 
@@ -111,7 +116,7 @@ textarea {
     padding: 0 50px;
     height: 860px;
     border: 1px solid #000;
-    background: url('/css/images/wenli-bg.png');
+    background: url('/ossstar/css/images/wenli-bg.png');
 }
 
 .left-arrow {
@@ -119,7 +124,7 @@ textarea {
     margin-left: -50px;
     width: 50px;
     height: 100%;
-    background: url('/css/images/star-left-Arrow.png');
+    background: url('/ossstar/css/images/star-left-Arrow.png');
 }
 
 .right-arrow {
@@ -127,7 +132,7 @@ textarea {
     margin-right: -50px;
     width: 50px;
     height: 100%;
-    background: url('/css/images/star-right-Arrow.png');
+    background: url('/ossstar/css/images/star-right-Arrow.png');
 }
 
 .star-inner {
@@ -139,7 +144,7 @@ textarea {
     margin-right: auto;
     width: 462px;
     height: 318px;
-    background: url('/css/images/star-badge.png');
+    background: url('/ossstar/css/images/star-badge.png');
 }
 
 .star-text h1 {
@@ -180,7 +185,7 @@ textarea {
     top: 50px;
     width: 210px;
     height: 72px;
-    background: url('/css/images/logo-star.png');
+    background: url('/ossstar/css/images/logo-star.png');
 }
 
 .star-footer .number {
@@ -197,4 +202,8 @@ textarea {
     right: 40px;
     font-size: 28px;
     font-weight: 600;
+}
+
+.contact-us {
+    margin-top: 20px;
 }
