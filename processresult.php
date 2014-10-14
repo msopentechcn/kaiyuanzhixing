@@ -508,7 +508,7 @@
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
-                            die();
+                            break;
                         }
 
                         // Compare original license file with standard license files
@@ -645,7 +645,7 @@
                             if($githubRepoSize > 500000) {
                                 $logger->log('debug', 'Repository is over 500M', $loghelperArr);
                                 echo "您的Git Hub仓库代码超过500M！";
-                                die();
+                                break;
                             }
                         }
 
@@ -686,7 +686,7 @@
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                                 </div>
                             </div>";   
-                            die();   
+                            break;   
                         }
 
                         $originalfilecontent = "";
@@ -773,7 +773,7 @@
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
-                            die();
+                            break;
                         }
 
                             // Compare original license file with standard license files
@@ -1026,7 +1026,7 @@
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                                 </div>
                             </div>";
-                            die();
+                            break;
                         }                      
                         chdir("target");
                         try {
@@ -1065,7 +1065,7 @@
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                                 </div>
                             </div>";
-                            die();
+                            break;
                         }
 
                         // Load file content
@@ -1123,7 +1123,7 @@
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
-                            die();
+                            break;
                         }
 
                         // Compare original license file with standard license files
