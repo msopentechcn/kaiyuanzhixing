@@ -586,33 +586,35 @@
                             InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
 
                             echo "<div>
-                                    <div id=\"checkwithfailed\">
-                                        <span id=\"titleresult\">评估结果:</span>
-                                        <span id=\"resultsentence\">没有通过评估</span>
-                                    </div>
-                                    <div id=\"declare\">
-                                        <span>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
-                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
-                            <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
-                                    </div>
-                                    <div id=\"originaldiv\">
-                                        <div>您的许可证比较结果</div>
-                                        <div id=\"originalcontent\"><pre>";
-                            echo $comparedStandardLicenseFileContent; 
-                            echo "</pre></div>
-                                    </div>
-                                    <div id=\"standarddiv\">
-                                    <div>";
-                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "</div>
-                                        <div id=\"standardcontent\"><pre>";
-                            echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
-                            echo "</pre></div>
-                            <div>如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a></div>
-                            <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
-                                    </div>
-                                    </div>";
+                                        <div id=\"checkwithfailed\">
+                                            <span id=\"titleresult\">评估结果:</span>
+                                            <span id=\"resultsentence\">没有通过评估</span>
+                                        </div>
+                                        <div id=\"declare\">
+                                            <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
+                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                                <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
+                                        </div>
+                                        <div id=\"originaldiv\">
+                                            <div>您的许可证比较结果</div>
+                                            <div id=\"originalcontent\">";
+                                echo $comparedStandardLicenseFileContent; 
+                                echo "</div>
+                                        </div>
+                                        <div id=\"standarddiv\">
+                                        <div>";
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
+                                echo "</div>
+                                            <div id=\"standardcontent\">";
+                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
+                                echo "</div>
+                                <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
+                                <div class=\"page-jump\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                </div>
+                                        </div>
+                                        </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
                         }
                     }
@@ -873,8 +875,10 @@
                                             <div id=\"standardcontent\">";
                                 echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
                                 echo "</div>
-                                <div>如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a></div>
-                                <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
+                                <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
+                                <div class=\"page-jump\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                </div>
                                         </div>
                                         </div>";
                                 RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -1087,11 +1091,11 @@
                             }
                         }
 
-                        $logger->log('debug', 'Picked up license files after git clone: ', $keyFiles);
+                        $logger->log('debug', 'Picked up license files after svn check out: ', $keyFiles);
                         foreach($keyFiles as $key => $value) {
                             $logger->log('debug', 'Key file['.$key."]: ".$value);
                         }
-                        $logger->log('debug', 'The length of keyFiles after git clone: '.count($keyFiles), $loghelperArr);
+                        $logger->log('debug', 'The length of keyFiles after svn check out: '.count($keyFiles), $loghelperArr);
 
                         if(count($keyFiles) == 0) {
                             echo "<div>
@@ -1197,33 +1201,35 @@
                             InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);                      
 
                             echo "<div>
-                                    <div id=\"checkwithfailed\">
-                                        <span id=\"titleresult\">评估结果:</span>
-                                        <span id=\"resultsentence\">没有通过评估</span>
-                                    </div>
-                                    <div id=\"declare\">
-                                        <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
-                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
-                            <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
-                                    </div>
-                                    <div id=\"originaldiv\">
-                                        <div>您的许可证比较结果</div>
-                                        <div id=\"originalcontent\">";
-                            echo $comparedStandardLicenseFileContent; 
-                            echo "</div>
-                                    </div>
-                                    <div id=\"standarddiv\">
-                                    <div>";
-                            echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                            echo "</div>
-                                        <div id=\"standardcontent\">";
-                            echo trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]]));
-                            echo "</div>
-                            <div>如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a></div>
-                            <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
-                                    </div>
-                                    </div>";
+                                        <div id=\"checkwithfailed\">
+                                            <span id=\"titleresult\">评估结果:</span>
+                                            <span id=\"resultsentence\">没有通过评估</span>
+                                        </div>
+                                        <div id=\"declare\">
+                                            <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
+                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
+                                <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
+                                        </div>
+                                        <div id=\"originaldiv\">
+                                            <div>您的许可证比较结果</div>
+                                            <div id=\"originalcontent\">";
+                                echo $comparedStandardLicenseFileContent; 
+                                echo "</div>
+                                        </div>
+                                        <div id=\"standarddiv\">
+                                        <div>";
+                                echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
+                                echo "</div>
+                                            <div id=\"standardcontent\">";
+                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
+                                echo "</div>
+                                <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
+                                <div class=\"page-jump\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                </div>
+                                        </div>
+                                        </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
                         }
 
