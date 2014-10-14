@@ -123,7 +123,7 @@
         </div>
 
         <div class="footer">
-            <div class="container"><a href="http://kaiyuanshe.chinacloudapp.cn/about.html">联系我们</a> | <a href="http://kaiyuanshe.chinacloudapp.cn/index.php" target="_blank">隐私条款</a> | <a href="http://kaiyuanshe.chinacloudapp.cn/index.php" target="_blank">使用条款</a> | 京ICP备<a href="http://www.miibeian.gov.cn/" target="_blank">14047895</a>号</div>
+            <div class="container"><a href="http://kaiyuanshe.chinacloudapp.cn/about.html">联系我们</a> | <a href="http://kaiyuanshe.chinacloudapp.cn/privacy-policy.html" target="_blank">隐私条款</a> | <a href="http://kaiyuanshe.chinacloudapp.cn/terms-of-use.html" target="_blank">使用条款</a> | 京ICP备<a href="http://www.miibeian.gov.cn/" target="_blank">14047895</a>号</div>
         </div>
     </div>
     <script src="/library/jqueryui/1.8.18/jquery-ui.min.js"></script>
