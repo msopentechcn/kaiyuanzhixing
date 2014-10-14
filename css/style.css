@@ -20,6 +20,11 @@ select {
 	margin: 10px;
 }
 
+#validform .input-bottom > p {
+    font-size: 18px;
+    color: #1972A1;
+}
+
 #proname {
 	width: 300px;
 }
@@ -32,6 +37,69 @@ select {
     width: 120px;
 }
 
+.small .ui-customSelect {
+    float: left;
+    margin-left: 8px;
+    width: 140px;
+    display: inline-block;
+    height: 34px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.small .ui-customSelect span {
+    width: 80%;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.small .ui-customSelect-window {
+    height: 34px;
+}
+
+.small .ui-customSelect-dropdown {
+    width: 140px;
+    margin: -2px -1px 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.small .ui-customSelect-dropdown label {
+    font-weight: normal;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.small .ui-customSelect-dropdown li:hover {
+    background: #f4fcf9;
+    cursor: pointer;
+}
+
+.small .ui-customSelect .ui-customSelect-arrow {
+    margin: .55em .5em 0 0;
+}
+
+.small .ui-customSelect .ui-customSelect-dropdown ul {
+    margin-top: 0;
+}
+
+.small .ui-customSelect .ui-customSelect-dropdown li {
+    width: 100%;
+    text-align: left;
+}
+
+.article-block.input-bottom > span {
+    float: left;
+    margin: 0 8px 0;
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+}
+
 #ver {
 	width: 100px;
 }
@@ -41,6 +109,8 @@ select {
 }
 
 #capchaimg {
+    float: left;
+    margin-left: 8px;
 	height: 34px;
 }
 
@@ -59,6 +129,8 @@ select {
 }
 
 #wAll {
+    float: left;
+    margin-top: 20px;
     color: red;
 }
 
@@ -90,6 +162,30 @@ select {
     margin-bottom: 10px;
 }
 
+.input-bottom.min-type {
+    width: 50%;
+    clear: none;
+}
+
+#validform input[type="text"] {
+    float: left;
+    padding: 0 2px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid #CCCCCC;
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+#validform input[type="checkbox"] {
+    float: left;
+    margin-top: 7px;
+}
+
 #overlay {
   visibility: hidden; /*hidden;*/
   position: absolute;
@@ -99,7 +195,7 @@ select {
   bottom: 0px;
   z-index: 1000;
   background: gray;
-  zoom: 1000;
+  zoom: 1;
   filter: alpha(opacity=80);
   opacity: 0.5;
 }

@@ -89,7 +89,7 @@
                         <div class="article-block input-bottom small">
                             <p>源代码仓库URL</p>
                             <input class="form-control input-bottom" type="text" name="reprourl" maxlength="100" id="reprou">
-                            <select class="form-control" name="rptype" id="reprotype">
+                            <select class="form-control singleSelect" name="rptype" id="reprotype">
 			                    <option value ="github">Git/GitHub</option>
 			                    <option value ="svn">SVN</option>
 			                </select>
