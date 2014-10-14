@@ -10,6 +10,7 @@
 		<title>开源之星计划</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
         <link href="/css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
+        <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/rixth-customSelect/jquery.customSelect.css" />
 		<link href="/css/2stage.css" rel="stylesheet">
 		
@@ -27,11 +28,14 @@
             require_once("util/Helper.php");
 		?>
 
-        <div id="overlay"></div>
-        <div id="statusdialog">
-            <div id="dialog">
-                <div id="statusinfo">正在探测文件</div>
-                <img src="/images/processing1.gif" alt="processing">
+        <div id="overlay">
+            <div id="statusdialog">
+                <div id="dialog">
+                    <h3>
+                        <i class="icon-spinner icon-spin"></i>
+                        <span id="statusinfo">正在探测文件</span>
+                    </h3>
+                </div>
             </div>
         </div>
 
