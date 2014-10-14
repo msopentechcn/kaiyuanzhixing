@@ -598,17 +598,17 @@
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
-                                            <div id=\"originalcontent\">";
+                                            <div id=\"originalcontent\"><pre>";
                                 echo $comparedStandardLicenseFileContent; 
-                                echo "</div>
+                                echo "</pre></div>
                                         </div>
                                         <div id=\"standarddiv\">
                                         <div>";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
-                                            <div id=\"standardcontent\">";
+                                            <div id=\"standardcontent\"><pre>";
                                 echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
-                                echo "</div>
+                                echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
@@ -864,17 +864,17 @@
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
-                                            <div id=\"originalcontent\">";
+                                            <div id=\"originalcontent\"><pre>";
                                 echo $comparedStandardLicenseFileContent; 
-                                echo "</div>
+                                echo "</pre></div>
                                         </div>
                                         <div id=\"standarddiv\">
                                         <div>";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
-                                            <div id=\"standardcontent\">";
+                                            <div id=\"standardcontent\"><pre>";
                                 echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
-                                echo "</div>
+                                echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
@@ -1214,17 +1214,17 @@
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
-                                            <div id=\"originalcontent\">";
+                                            <div id=\"originalcontent\"><pre>";
                                 echo $comparedStandardLicenseFileContent; 
-                                echo "</div>
+                                echo "</pre></div>
                                         </div>
                                         <div id=\"standarddiv\">
                                         <div>";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
-                                            <div id=\"standardcontent\">";
+                                            <div id=\"standardcontent\"><pre>";
                                 echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
-                                echo "</div>
+                                echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
