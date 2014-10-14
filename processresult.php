@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-        <div class="container">
+        <div class="container comparison">
         <?php
             require_once("util/Helper.php");
             require_once('licensediff.php');
@@ -585,16 +585,15 @@
                         else {
                             InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
 
-                            echo "<div>
-                                        <div id=\"checkwithfailed\">
+                            echo "<div id=\"checkwithfailed\">
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentence\">没有通过评估</span>
                                         </div>
                                         <div id=\"declare\">
-                                            <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
+                                            <p>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
-                                <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
+                                echo "许可证文件内容, 详细文本之间的差别请看下面:</p>
+                                <p><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</p><p><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></p>
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
@@ -851,16 +850,15 @@
                             else {
                                 InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);                          
 
-                                echo "<div>
-                                        <div id=\"checkwithfailed\">
+                                echo "<div id=\"checkwithfailed\">
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentence\">没有通过评估</span>
                                         </div>
                                         <div id=\"declare\">
-                                            <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
+                                            <p>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
-                                <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
+                                echo "许可证文件内容, 详细文本之间的差别请看下面:</p>
+                                <p><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</p><p><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></p>
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
@@ -1201,16 +1199,15 @@
                         else {
                             InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);                      
 
-                            echo "<div>
-                                        <div id=\"checkwithfailed\">
+                            echo "<div id=\"checkwithfailed\">
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentence\">没有通过评估</span>
                                         </div>
                                         <div id=\"declare\">
-                                            <span>原因: 您的许可证文件: LICENSE.txt, 已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
+                                            <p>原因: 您的许可证文件已经被检测到, 但是内容并没有完全匹配到由OSI批准的";
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
-                                echo "许可证文件内容, 详细文本之间的差别请看下面:</span>
-                                <div><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</div><div><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></div>
+                                echo "许可证文件内容, 详细文本之间的差别请看下面:</p>
+                                <p><span style=\"background-color:#005500\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本增加的部分</p><p><span style=\"background-color:#990000\">&nbsp;&nbsp;&nbsp;&nbsp;</span>代表比标准文本减少的部分</span></p>
                                         </div>
                                         <div id=\"originaldiv\">
                                             <div>您的许可证比较结果</div>
