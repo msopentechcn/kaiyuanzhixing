@@ -113,7 +113,8 @@
             <p class=\"date\">";
         echo $certDate; 
         echo "</p>
-        <div><input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+        </div></div></div>
+        <div class=\"page-jump\"><input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                 </div>
             </div>";
         ?>
@@ -122,7 +123,6 @@
                 </div>
             </div>
             </div>
-        </div>
         </div>
 
         <script src="/library/jquery/1.11.1/jquery.min.js"></script>
