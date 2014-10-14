@@ -18,7 +18,7 @@
         <div class="wrapper">
             <div class="header">
                 <div class="container">
-                    <div class="navbar-logo"><a href="/index.php"><img src="http://kaiyuanshe.chinacloudapp.cn/templates/hli/css/images/logo.png" height="55"></a></div>
+                    <div class="navbar-logo"><a href="http://kaiyuanshe.chinacloudapp.cn/index.php"><img src="http://kaiyuanshe.chinacloudapp.cn/templates/hli/css/images/logo.png" height="55"></a></div>
                     <div class="navbar-collapse">
                         <ul class="navbar-nav touch-menu">
                             <li><span class="glyphicon glyphicon-th" id="touch-menu-btn"></span></li>
@@ -576,6 +576,7 @@
                                 <p class=\"date\">";
                             echo $certDate; 
                             echo "</p>
+                            </div></div></div>
                             <div class=\"page-jump\">
                                 <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                             </div>
@@ -657,7 +658,7 @@
                             $logger->log('error', 'Git clone got exception: '.$e->getMessage(), $loghelperArr);   
                             chdir("..");
                             deldir($foldername);
-                            echo "<div>
+                            echo "
                                 <div class=\"article-block\" id=\"checkwithfailed\">
                                     <span id=\"titleresult\">评估结果:</span>
                                     <span id=\"resultsentence\">没有发现许可证文件</span>
@@ -841,6 +842,7 @@
                                     <p class=\"date\">";
                                 echo $certDate; 
                                 echo "</p>
+                                </div></div></div>
                                 <div class=\"page-jump\">
                                     <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                                 </div>
@@ -888,7 +890,7 @@
                         else {
                             InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);                            
 
-                            echo "<div>
+                            echo "
                                 <div class=\"article-block\" id=\"checkwithfailed\">
                                     <span id=\"titleresult\">评估结果:</span>
                                     <span id=\"resultsentence\">没有发现许可证文件</span>
@@ -996,7 +998,7 @@
                             $logger->log('error', 'SVN command "svn co ... target --depth empty" got exception: '.$e->getMessage(), $loghelperArr);
                             chdir("..");
                             deldir($foldername);
-                            echo "<div>
+                            echo "
                                 <div class=\"article-block\" id=\"checkwithfailed\">
                                     <span id=\"titleresult\">评估结果:</span>
                                     <span id=\"resultsentence\">没有发现许可证文件</span>
@@ -1035,7 +1037,7 @@
                             chdir("..");
                             chdir("..");
                             deldir($foldername);
-                            echo "<div>
+                            echo "
                                 <div class=\"article-block\" id=\"checkwithfailed\">
                                     <span id=\"titleresult\">评估结果:</span>
                                     <span id=\"resultsentence\">没有发现许可证文件</span>
@@ -1190,6 +1192,7 @@
                                 <p class=\"date\">";
                             echo $certDate; 
                             echo "</p>
+                            </div></div></div>
                             <div class=\"page-jump\">
                                 <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
                             </div>
@@ -1239,7 +1242,7 @@
                         $logger->log('debug', 'License file not found', $loghelperArr);
                         // Show No License Result
                         InsertRecords($urlText, "fail", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
-                        echo "<div>
+                        echo "
                                 <div class=\"article-block\" id=\"checkwithfailed\">
                                     <span id=\"titleresult\">评估结果:</span>
                                     <span id=\"resultsentence\">没有发现许可证文件</span>
