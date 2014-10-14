@@ -44,7 +44,7 @@
                         <li><span class="glyphicon glyphicon-th" id="touch-menu-btn"></span></li>
                     </ul>
                     <ul class="navbar-nav navbar-list">
-                        <li><a href="/#">主页</a></li>
+                        <li><a href="http://kaiyuanshe.chinacloudapp.cn/index.php">主页</a></li>
                         <li class="active"><a href="http://kaiyuanshe.chinacloudapp.cn/star-home.html">开源之星计划</a></li>
                         <li><a href="http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=8">开源参考文档</a></li>
                         <li class=""><a href="http://kaiyuanshe.chinacloudapp.cn/ambassador-home.html">开源大使计划</a></li>
