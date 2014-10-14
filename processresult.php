@@ -986,7 +986,7 @@
                         $timeparts = explode(' ',microtime());
                         $etime = $timeparts[1].substr($timeparts[0],1);
                         $tempName = $ran.$timeparts[1];
-                        $foldername = $GitName.$tempName;
+                        $foldername = $tempName;
 
                         mkdir($foldername, 0777, true);
                         chdir($foldername);
