@@ -550,7 +550,7 @@
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
-                                    <div class=\"permanent-link\">永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
+                                    <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
                                     <div class=\"star-content\">
                                         <div class=\"left-arrow\"></div>
                                         <div class=\"right-arrow\"></div>
@@ -620,7 +620,7 @@
                     }
                     else {
                         $logger->log('debug', 'License file not found', $loghelperArr);
-                        InsertStatusRecords($sessionId, "未发现许可文件，正在克隆代码仓库副本", $conn, $logger, $loghelperArr);
+                        InsertStatusRecords($sessionId, "快速检测未找到许可文件，正在克隆代码仓库副本以便进一步检测", $conn, $logger, $loghelperArr);
 
                         // Git clone the repository based on git URL
 
@@ -816,7 +816,7 @@
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentencepass\">评估通过!</span>
                                         </div>
-                                        <div class=\"permanent-link\">永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
+                                        <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
                                         <div class=\"star-content\">
                                             <div class=\"left-arrow\"></div>
                                             <div class=\"right-arrow\"></div>
@@ -1166,7 +1166,7 @@
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
-                                    <div class=\"permanent-link\">永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
+                                    <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
                                     <div class=\"star-content\">
                                         <div class=\"left-arrow\"></div>
                                         <div class=\"right-arrow\"></div>
