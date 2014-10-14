@@ -1070,6 +1070,7 @@
 
                         // Load file content
                         $originalfilecontentarr = file($foundLinceseFile);
+                        $logger->log('debug', 'the found license file name in svn check out: '.$foundLinceseFile, $loghelperArr);
 
                         foreach($originalfilecontentarr as $line) {
                             $originalfilecontent.=$line;
