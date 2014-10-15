@@ -633,14 +633,17 @@
                         $repo = new GitRepo();
 
                         // Get git client folder name
-                        $comresult = stripos($urlText, 'coding.net');
+                        $comresult = stripos($urlText, '.git');
                         if($comresult !== FALSE) {
-                            $GitName = 'git';
-                        }else {
                             $indexOfLastSplash = strrpos($urlText, "/");
                             $indexOfLastDot = strrpos($urlText, '.');
                             $GitName = substr($urlText, $indexOfLastSplash + 1, $indexOfLastDot - $indexOfLastSplash - 1);
+                        }else{
+                            $indexOfLastSplash = strrpos($urlText, '/');
+                            $GitName = substr($urlText, $indexOfLastSplash + 1);
                         }
+
+                        $logger->log('debug', 'GitName: '.$GitName, $loghelperArr);
 
                         $ran = rand();
                         $timeparts = explode(' ',microtime());
