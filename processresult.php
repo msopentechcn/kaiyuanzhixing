@@ -402,6 +402,11 @@
 
                     // Send GET requests and try different kinds of license files
                     foreach($licensepatterns as $singlefile) {
+                        $comresult = stripos($urlTextRaw, 'coding.net');
+                        if($comresult !== FALSE) {
+                            break;   
+                        }
+
                         $tempURL = $urlTextRaw."/".$singlefile;
                         $comresult = stripos($singlefile, ".");
                         if($comresult !== FALSE) {
@@ -628,9 +633,14 @@
                         $repo = new GitRepo();
 
                         // Get git client folder name
-                        $indexOfLastSplash = strrpos($urlText, "/");
-                        $indexOfLastDot = strrpos($urlText, '.');
-                        $GitName = substr($urlText, $indexOfLastSplash + 1, $indexOfLastDot - $indexOfLastSplash - 1);
+                        $comresult = stripos($urlText, 'coding.net');
+                        if($comresult !== FALSE) {
+                            $GitName = 'git';
+                        }else {
+                            $indexOfLastSplash = strrpos($urlText, "/");
+                            $indexOfLastDot = strrpos($urlText, '.');
+                            $GitName = substr($urlText, $indexOfLastSplash + 1, $indexOfLastDot - $indexOfLastSplash - 1);
+                        }
 
                         $ran = rand();
                         $timeparts = explode(' ',microtime());
