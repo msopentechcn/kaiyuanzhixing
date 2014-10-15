@@ -950,8 +950,8 @@
 
                     InsertStatusRecords($sessionId, "正在探测许可文件", $conn, $logger, $loghelperArr);
 
-                    $fileList = SvnPeer::ls($urlText);
-                    $fileList = explode("<br>", $fileList);
+                    $command = "svn ls ".$urlText;
+                    $fileList = SvnPeer::runCmd($command);
 
                     $existLincese = FALSE;
 
