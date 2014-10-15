@@ -114,7 +114,7 @@
         echo $certDate; 
         echo "</p>
         </div></div></div>
-        <div class=\"page-jump\"><input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+        <div class=\"page-jump\"><input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                 </div>
             </div>";
         ?>
