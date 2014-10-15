@@ -379,12 +379,19 @@
 	                }
 
                     $decodedArr = json_decode($approvedsites, TRUE);
+                    
+
                     foreach($decodedArr as $siteInstance) {
                         $comresult = stripos($urlText, $siteInstance['website']);
                         if($comresult !== FALSE) {
                             $pos1 = stripos($urlText, $siteInstance['website']);
                             $sub1 = substr($urlText, $pos1 + strlen($siteInstance['website']));
-                            $pos2 = strrpos($sub1, "git");
+                            $comresult = stripos($urlText, '.git');
+                            if($comresult !== FALSE) {
+                                $pos2 = strrpos($sub1, "git");
+                            }else{
+                                $pos2 = strlen($sub1) + 1;
+                            }
                             $sub2 = substr($sub1, 0, $pos2 - 1);
                             if($siteInstance['website'] == 'github.com') {
                                 $githubProName = $sub2;
