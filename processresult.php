@@ -619,7 +619,7 @@
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
                                             <div id=\"standardcontent\"><pre>";
-                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
+                                echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
                                 echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
@@ -893,7 +893,7 @@
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
                                             <div id=\"standardcontent\"><pre>";
-                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
+                                echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
                                 echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
@@ -1243,7 +1243,7 @@
                                 echo substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
                                 echo "</div>
                                             <div id=\"standardcontent\"><pre>";
-                                echo htmlspecialchars(trim(preg_replace('/\s\s+/', ' ', $licensecollection[$keyFiles[$minKey]])), ENT_QUOTES);
+                                echo htmlspecialchars($licensecollection[$keyFiles[$minKey]]);
                                 echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
