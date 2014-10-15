@@ -32,8 +32,8 @@
             <div id="statusdialog">
                 <div id="dialog">
                     <h3>
-                        <i class="icon-spinner icon-spin"></i>
                         <span id="statusinfo">正在探测文件</span>
+                        <i class="icon-spinner icon-spin"></i>                        
                     </h3>
                 </div>
             </div>

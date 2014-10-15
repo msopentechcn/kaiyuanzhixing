@@ -103,7 +103,7 @@
             }
 
             function InsertStatusRecords($sid, $stat, $conn, $logger, $loghelperArr) {
-                $latestTime = date('y-m-d h:i:s',time());
+                $latestTime = date('y-m-d H:i:s',time());
                 $sqlComm = "insert into kys.processstatus(chSessionId, chStatus, dtUpdateTime) values(\"".$sid."\", \"".$stat."\", \"".$latestTime."\")";
                 try{
                     $result = mysql_query($sqlComm, $conn);
@@ -141,7 +141,7 @@
 
                     $currentidURL = $row[0];
 
-                    $latestTime = date('y-m-d h:i:s',time());
+                    $latestTime = date('y-m-d H:i:s',time());
                     $sqlComm = "insert into kys.reprovisithistory(idRepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType) values(".$currentidURL.", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\")";
                     try{
                         $result = mysql_query($sqlComm, $conn);
@@ -216,7 +216,7 @@
                     }catch(Exception $e) {
                         $logger->log('error', 'Get latest cerID from kys.checkpasshistory got exception: '.$e->getMessage(), $loghelperArr);
                     }
-                    $latestTime = date('y-m-d h:i:s',time());
+                    $latestTime = date('y-m-d H:i:s',time());
                     $row = mysql_fetch_array($result, MYSQL_NUM);
                     $latestCertID = $row[0];
                     if($latestCertID == '') {
@@ -318,7 +318,7 @@
                 $row = mysql_fetch_array($result, MYSQL_NUM);
                 if($rowCount != 0) {
                     $lastVisit = $row[0];
-                    $currentTime = date('y-m-d h:i:s',time());
+                    $currentTime = date('y-m-d H:i:s',time());
                     $diff = strtotime($currentTime) - strtotime($lastVisit);
                     if(abs($diff) < 60) {
                         echo "访问很频繁，此开源项目正在被验证过程中。。。";
@@ -515,7 +515,7 @@
                                         <a href=\"http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
                                         <a href=\"http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                         如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
-                                        <div><a href=\"/licensing.php\">完成</a></div>
+                                        <div><a href=\"/index.php\">完成</a></div>
                                     </div>
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
@@ -590,7 +590,7 @@
                             echo "</p>
                             </div></div></div>
                             <div class=\"page-jump\">
-                                <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                             </div>
                             </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -623,7 +623,7 @@
                                 echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                                         </div>
                                         </div>";
@@ -703,7 +703,7 @@
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a>
                                 </div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                             </div>";   
                             break;   
@@ -788,7 +788,7 @@
                                         <a href=\"http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
                                         <a href=\"http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                         如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
-                                        <div><a href=\"/licensing.php\">完成</a></div>
+                                        <div><a href=\"/index.php\">完成</a></div>
                                     </div>
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
@@ -864,7 +864,7 @@
                                 echo "</p>
                                 </div></div></div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                                 </div>";
                                 RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -897,7 +897,7 @@
                                 echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                                         </div>
                                         </div>";
@@ -935,7 +935,7 @@
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a>
                                 </div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                             </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -1043,7 +1043,7 @@
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a>
                                 </div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                             </div>";
                             break;
@@ -1082,7 +1082,7 @@
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a>
                                 </div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                             </div>";
                             break;
@@ -1138,7 +1138,7 @@
                                         <span>请参考下面的链接:</span><br>
                                         <a href=\"http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
                                         <a href=\"http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
-                                        <div><a href=\"/licensing.php\">完成</a></div>
+                                        <div><a href=\"/index.php\">完成</a></div>
                                     </div>
                                 </div>";
                             InsertRecords($urlText, "none", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
@@ -1214,7 +1214,7 @@
                             echo "</p>
                             </div></div></div>
                             <div class=\"page-jump\">
-                                <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                             </div>
                             </div>";
                             RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);
@@ -1247,7 +1247,7 @@
                                 echo "</pre></div>
                                 <div class=\"contact-us\">如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a></div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                                         </div>
                                         </div>";
@@ -1287,7 +1287,7 @@
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://www.kaiyuanshe.cn/feedback.php\">联系我们</a>
                                 </div>
                                 <div class=\"page-jump\">
-                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/licensing.php\">
+                                    <input type=\"button\" value=\"完成\" class=\"resolver-next\" data-redirect=\"/index.php\">
                                 </div>
                             </div>";
                         RemoveStatusRecords($sessionId, $conn, $logger, $loghelperArr);                        
