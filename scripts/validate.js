@@ -28,8 +28,14 @@ function validateFields() {
     }
     else {
         $("#wproName").text("");
-        $("#proname").parent().removeClass("has-error");
-        $("#proname").parent().addClass("has-success");
+        var proname = $("#proname").val();
+        if (proname.length > 100) {
+            $("#wproName").text("长度过长");
+            return false;
+        } else {
+            $("#proname").parent().removeClass("has-error");
+            $("#proname").parent().addClass("has-success");
+        }
     }
 
     // Validate Project Site
@@ -45,6 +51,16 @@ function validateFields() {
             return false;
         }
         else {
+            $("#wproSite").text("");
+            $("#proname").parent().addClass("has-success");
+        }
+
+        var prosite = $("#projsite").val();
+        if(prosite.length > 100) {
+            $("#wproSite").text("长度过长");
+            $("#proname").parent().addClass("has-warning");
+            return false;
+        }else {
             $("#wproSite").text("");
             $("#proname").parent().addClass("has-success");
         }
@@ -64,6 +80,16 @@ function validateFields() {
         }
         else {
             $("#wproRepo").text("");
+            $("#proname").parent().addClass("has-success");
+        }
+
+        var reposite = $("#reprou").val();
+        if(reposite.length > 100) {
+            $("#wproSite").text("长度过长");
+            $("#proname").parent().addClass("has-warning");
+            return false;
+        }else {
+            $("#wproSite").text("");
             $("#proname").parent().addClass("has-success");
         }
     }
