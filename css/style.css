@@ -188,7 +188,7 @@ select {
 
 #overlay {
   visibility: hidden; /*hidden;*/
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 0px;
   right: 0px;
