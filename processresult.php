@@ -505,8 +505,8 @@
                                     <br>我们会稍后评估并补充许可证文件库</div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                         如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
                                         <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
@@ -689,8 +689,8 @@
                                 
                                 <div class=\"article-block\" id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                 </div>
                                 <div class=\"article-block\">
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a>
@@ -778,8 +778,8 @@
                                     <br>我们会稍后评估并补充许可证文件库</div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                         如果对检测结果有任何意见和反馈, 您可以<a href=\"/feedback.php\">联系我们</a>
                                         <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
@@ -921,8 +921,8 @@
                                 
                                 <div class=\"article-block\" id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                 </div>
                                 <div class=\"article-block\">
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a>
@@ -1029,8 +1029,8 @@
                                 
                                 <div class=\"article-block\" id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                 </div>
                                 <div class=\"article-block\">
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a>
@@ -1068,8 +1068,8 @@
                                 
                                 <div class=\"article-block\" id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                 </div>
                                 <div class=\"article-block\">
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a>
@@ -1129,8 +1129,8 @@
                                     <br>我们会稍后评估并补充许可证文件库</div>
                                     <div id=\"moreinfo\">
                                         <span>请参考下面的链接:</span><br>
-                                        <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                        <a href=\"#\">如何建立您的开源许可证?</a>
+                                        <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                        <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                         <div><a href=\"/ossstar/licensing.php\">上一步</a></div>
                                     </div>
                                 </div>";
@@ -1273,8 +1273,8 @@
                                 
                                 <div class=\"article-block\" id=\"moreinfo\">
                                     <span>请参考下面的链接:</span><br>
-                                    <a href=\"#\">如何建立您的许可证文件?</a><br>
-                                    <a href=\"#\">如何建立您的开源许可证?</a>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的许可证文件?</a><br>
+                                    <a href=\"http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=9\">如何建立您的开源许可证?</a>
                                 </div>
                                 <div class=\"article-block\">
                                     如果对检测结果有任何意见和反馈, 您可以<a href=\"http://kaiyuanshe.chinacloudapp.cn/feedback.php\">联系我们</a>
