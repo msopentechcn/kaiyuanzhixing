@@ -198,7 +198,7 @@
                 return $certID;
             }
 
-            function InsertPassRecords($urlText, $validationresult, $projectname, $projectsite, $projectversion, $clientip, $repotype, $conn, $logger, $loghelperArr) {
+            function InsertPassRecords($urlText, $validationresult, $projectname, $projectsite, $projectversion, $clientip, $repotype, $ln, $conn, $logger, $loghelperArr) {
                 $sqlComm = "select cerID from kys.checkpasshistory where RepoURLs = \"".$urlText."\" and chVersion = \"".$projectversion."\" and chProName = \"".$projectname."\"";
                 try{
                    $result = mysql_query($sqlComm, $conn); 
@@ -222,7 +222,7 @@
                     if($latestCertID == '') {
                         $latestCertID = '000001';
                         
-                        $sqlComm = "insert into kys.checkpasshistory(RepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType, cerID) values(\"".$urlText."\", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\", \"".$latestCertID."\")";
+                        $sqlComm = "insert into kys.checkpasshistory(RepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType, cerID, chLicense) values(\"".$urlText."\", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\", \"".$latestCertID."\", \"".$ln."\")";
 
                         try{
                             $result = mysql_query($sqlComm, $conn);
@@ -241,7 +241,7 @@
                             $latestCertID = $tmp;
                         }
 
-                        $sqlComm = "insert into kys.checkpasshistory(RepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType, cerID) values(\"".$urlText."\", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\", \"".$latestCertID."\")";
+                        $sqlComm = "insert into kys.checkpasshistory(RepoURLs, chResult, timeLastVisit, chProName, chProSite, chVersion, chIPAddr, chRepoType, cerID, chLicense) values(\"".$urlText."\", \"".$validationresult."\", \"".$latestTime."\", \"".$projectname."\", \"".$projectsite."\", \"".$projectversion."\", \"".$clientip."\", \"".$repotype."\", \"".$latestCertID."\", \"".$ln."\")";
 
                         try{
                             $result = mysql_query($sqlComm, $conn);
@@ -550,9 +550,10 @@
                         $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
 
                         if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
+                            $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
 
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
-                            InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                            InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $ln, $conn, $logger, $loghelperArr);
                             $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                             $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                             $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
@@ -562,7 +563,7 @@
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
-                                    <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
+                                    <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID'>点这里</a></div>
                                     <div class=\"star-content\">
                                         <div class=\"left-arrow\"></div>
                                         <div class=\"right-arrow\"></div>
@@ -824,9 +825,10 @@
                             $comparedStandardLicenseFileContent = $diffOpcodeArr[$minKey];
                             
                             if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
+                                $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
 
                                 InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
-                                InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                                InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $ln, $conn, $logger, $loghelperArr);
                                 $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                                 $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                                 $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
@@ -836,7 +838,7 @@
                                             <span id=\"titleresult\">评估结果:</span>
                                             <span id=\"resultsentencepass\">评估通过!</span>
                                         </div>
-                                        <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
+                                        <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID'>点这里</a></div>
                                         <div class=\"star-content\">
                                             <div class=\"left-arrow\"></div>
                                             <div class=\"right-arrow\"></div>
@@ -1174,9 +1176,10 @@
                             
 
                         if(verifyPass($comparedStandardLicenseFileContent, $licensecollection[$keyFiles[$minKey]])) {
+                            $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
 
                             InsertRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
-                            InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $conn, $logger, $loghelperArr);
+                            InsertPassRecords($urlText, "pass", $proName, $proSite, $proVer, $ipAddr, $protocoltype, $ln, $conn, $logger, $loghelperArr);
                             $certID = GetCertID($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                             $certDate = GetCertDate($urlText, $proName, $proVer, $conn, $logger, $loghelperArr);
                             $ln = substr($keyFiles[$minKey], 0, strrpos($keyFiles[$minKey], "."));
@@ -1186,7 +1189,7 @@
                                         <span id=\"titleresult\">评估结果:</span>
                                         <span id=\"resultsentencepass\">评估通过!</span>
                                     </div>
-                                    <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID&ln=$ln'>点这里</a></div>
+                                    <div class=\"permanent-link\">证书永久Link: <a href='/gethistory.php?certID=$certID'>点这里</a></div>
                                     <div class=\"star-content\">
                                         <div class=\"left-arrow\"></div>
                                         <div class=\"right-arrow\"></div>

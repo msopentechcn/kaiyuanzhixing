@@ -60,7 +60,6 @@
         }
 
         $certID = $_GET['certID'];
-        $licenseName = $_GET['ln'];
 
         $dbconf = file('conf/db.json');
         $dbjson = '';
@@ -71,7 +70,7 @@
 
         $conn = mysql_connect($decodedDbConf['server'],$decodedDbConf['user'],$decodedDbConf['password']) or die ("数据连接错误!!!");
 
-        $sqlComm = "select RepoURLs, timeLastVisit, chProName from kys.checkpasshistory where cerID = \"".$certID."\"";
+        $sqlComm = "select RepoURLs, timeLastVisit, chProName, chLicense from kys.checkpasshistory where cerID = \"".$certID."\"";
         try{
             $result = mysql_query($sqlComm, $conn);
         }catch(Exception $e) {
@@ -82,6 +81,7 @@
         $urlText = $row[0];
         $certDate = $row[1];
         $proName = $row[2];
+        $licenseName = $row[3];
 
         echo "<div>
                 <div id=\"checkwithfailed\">
