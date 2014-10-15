@@ -78,7 +78,7 @@
                     <form action="processresult.php" method="post" id="validform">
                         <div class="article-block input-bottom min-type-2">
 			                <p>项目名称</p>
-			                <input class="form-control" type="text" name="projectname" maxlength="16" id="proname">
+			                <input class="form-control" type="text" name="projectname" maxlength="100" id="proname">
                             <span id="wproName"> *</span>
                         </div>
                         <div class="article-block input-bottom min-type-2">
