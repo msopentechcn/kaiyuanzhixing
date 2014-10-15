@@ -162,8 +162,10 @@ select {
     margin-bottom: 10px;
 }
 
-.input-bottom.min-type {
-    width: 50%;
+.input-bottom.min-type-2 {
+    margin-right: 80px;
+    display: inline-block;
+    width: auto;
     clear: none;
 }
 
@@ -187,17 +189,14 @@ select {
 }
 
 #overlay {
-  visibility: hidden; /*hidden;*/
+  visibility: hidden;
   position: fixed;
   left: 0px;
   top: 0px;
   right: 0px;
   bottom: 0px;
   z-index: 1000;
-  background: gray;
-  zoom: 1;
-  filter: alpha(opacity=80);
-  opacity: 0.5;
+  background: rgba(0,0,0,.6);
 }
 
 #statusdialog {
@@ -216,10 +215,12 @@ select {
   height: 200px;
   margin: 100px auto;
   margin-top: 200px;
-  border: 1px solid #000;
   padding: 15px;
   text-align: center;
-  background: white;
+}
+
+#dialog h3 {
+    color: rgba(255,255,255,.9);
 }
 
 #statusinfo {
