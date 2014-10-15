@@ -14,8 +14,8 @@
         <link rel="stylesheet" href="/css/rixth-customSelect/jquery.customSelect.css" />
 		<link href="/css/2stage.css" rel="stylesheet">
 		
-		<script src="http://kaiyuanshe.chinacloudapp.cn/ossstar/scripts/jquery-1.9.1.js" type="text/javascript"></script>
-        <script src="http://kaiyuanshe.chinacloudapp.cn/ossstar/scripts/validate.js" type="text/javascript"></script>
+		<script src="http://www.kaiyuanshe.cn/ossstar/scripts/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="http://www.kaiyuanshe.cn/ossstar/scripts/validate.js" type="text/javascript"></script>
 	</head>
 	<body>
         <?php
@@ -42,17 +42,17 @@
         <div class="wrapper">
             <div class="header">
                 <div class="container">
-                    <div class="navbar-logo"><a href="http://kaiyuanshe.chinacloudapp.cn/index.php"><img src="http://kaiyuanshe.chinacloudapp.cn/templates/hli/css/images/logo.png" height="55"></a></div>
+                    <div class="navbar-logo"><a href="http://www.kaiyuanshe.cn/index.php"><img src="http://www.kaiyuanshe.cn/templates/hli/css/images/logo.png" height="55"></a></div>
                     <div class="navbar-collapse">
                     <ul class="navbar-nav touch-menu">
                         <li><span class="glyphicon glyphicon-th" id="touch-menu-btn"></span></li>
                     </ul>
                     <ul class="navbar-nav navbar-list">
-                        <li><a href="http://kaiyuanshe.chinacloudapp.cn/index.php">主页</a></li>
-                        <li class="active"><a href="http://kaiyuanshe.chinacloudapp.cn/star-home.html">开源之星计划</a></li>
-                        <li><a href="http://kaiyuanshe.chinacloudapp.cn/index.php?option=com_content&view=category&id=8">开源参考文档</a></li>
-                        <li class=""><a href="http://kaiyuanshe.chinacloudapp.cn/ambassador-home.html">开源大使计划</a></li>
-                        <li><a href="http://kaiyuanshe.chinacloudapp.cn/about.html">关于我们</a></li>
+                        <li><a href="http://www.kaiyuanshe.cn/index.php">主页</a></li>
+                        <li class="active"><a href="http://www.kaiyuanshe.cn/star-home.html">开源之星计划</a></li>
+                        <li><a href="http://www.kaiyuanshe.cn/index.php?option=com_content&view=category&id=8">开源参考文档</a></li>
+                        <li class=""><a href="http://www.kaiyuanshe.cn/ambassador-home.html">开源大使计划</a></li>
+                        <li><a href="http://www.kaiyuanshe.cn/about.html">关于我们</a></li>
                     </ul>
                     <!--<ul class="navbar-nav navbar-search">
                         <li>
@@ -108,7 +108,7 @@
                             <span>看不清？点击图片</span><span id="wproVeri"></span>
                         </div>
                         <div class="article-block input-bottom">
-			                <input type="checkbox" name="termagree" id="term" value="agree"><span id="declare">我已阅读<a href="http://kaiyuanshe.chinacloudapp.cn/terms-of-use.html" target="_blank">《使用条款》</a>，并保证遵守开源社网站规范</span>
+			                <input type="checkbox" name="termagree" id="term" value="agree"><span id="declare">我已阅读<a href="http://www.kaiyuanshe.cn/terms-of-use.html" target="_blank">《使用条款》</a>，并保证遵守开源社网站规范</span>
                         </div>
                         <div class="article-block input-bottom">
 			                <input class="btn btn-primary resolver-next" type="submit" value="提交" id="sub" onclick="return validateFields()">
@@ -127,7 +127,7 @@
         </div>
 
         <div class="footer">
-            <div class="container"><a href="http://kaiyuanshe.chinacloudapp.cn/about.html">联系我们</a> | <a href="http://kaiyuanshe.chinacloudapp.cn/privacy-policy.html" target="_blank">隐私条款</a> | <a href="http://kaiyuanshe.chinacloudapp.cn/terms-of-use.html" target="_blank">使用条款</a> | 京ICP备<a href="http://www.miibeian.gov.cn/" target="_blank">14047895</a>号</div>
+            <div class="container"><a href="http://www.kaiyuanshe.cn/about.html">联系我们</a> | <a href="http://www.kaiyuanshe.cn/privacy-policy.html" target="_blank">隐私条款</a> | <a href="http://www.kaiyuanshe.cn/terms-of-use.html" target="_blank">使用条款</a> | 京ICP备<a href="http://www.miibeian.gov.cn/" target="_blank">14047895</a>号</div>
         </div>
     </div>
     <script src="/library/jqueryui/1.8.18/jquery-ui.min.js"></script>
