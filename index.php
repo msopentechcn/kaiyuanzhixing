@@ -15,7 +15,7 @@
 		<link href="/css/2stage.css" rel="stylesheet">
 		
 		<script src="http://www.kaiyuanshe.cn/ossstar/scripts/jquery-1.9.1.js" type="text/javascript"></script>
-        <script src="http://www.kaiyuanshe.cn/ossstar/scripts/validate.js" type="text/javascript"></script>
+        <script src="/scripts/validate.js" type="text/javascript"></script>
 	</head>
 	<body>
         <?php
