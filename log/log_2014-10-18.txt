@@ -1,0 +1,18 @@
+[2014-10-18 14:23:40.359052] [INFO] <===================================================>
+[2014-10-18 14:23:40.410335] [DEBUG] Start loading license files at: 2014-10-18 14:23:40
+[2014-10-18 14:23:40.416271] [DEBUG] End loading license files at: 2014-10-18 14:23:40
+[2014-10-18 14:23:40.416343] [DEBUG] The prototype is SVN
+[2014-10-18 14:23:49.349200] [DEBUG] License file not found
+[2014-10-18 21:44:09.648475] [INFO] <===================================================>
+[2014-10-18 21:44:09.673197] [DEBUG] Start loading license files at: 2014-10-18 21:44:09
+[2014-10-18 21:44:09.678968] [DEBUG] End loading license files at: 2014-10-18 21:44:09
+[2014-10-18 21:44:09.679054] [DEBUG] The prototype is GitHub
+[2014-10-18 21:44:09.679244] [DEBUG] 
+[2014-10-18 21:44:09.679322] [DEBUG] Start HttpRequests at: 2014-10-18 21:44:09
+[2014-10-18 21:44:09.705815] [DEBUG] End HttpRequests at: 2014-10-18 21:44:09
+[2014-10-18 21:44:09.705909] [DEBUG] time cost: 0.02652
+[2014-10-18 21:44:09.705965] [DEBUG] License file not found
+[2014-10-18 21:44:09.735716] [DEBUG] GitName: www.sina.com.cn
+[2014-10-18 21:44:25.802829] [ERROR] Git clone got exception: Cloning into 'www.sina.com.cn'...
+fatal: unable to access 'http://www.sina.com.cn.git/': Could not resolve host: www.sina.com.cn.git
+

@@ -1,0 +1,31 @@
+[2014-10-31 14:13:30.201055] [INFO] <===================================================>
+[2014-10-31 14:13:30.237407] [DEBUG] Start loading license files at: 2014-10-31 14:13:30
+[2014-10-31 14:13:30.242907] [DEBUG] End loading license files at: 2014-10-31 14:13:30
+[2014-10-31 14:13:30.242974] [DEBUG] The prototype is GitHub
+[2014-10-31 14:13:30.243099] [DEBUG] https://raw.githubusercontent.com/izenecloud/sf1r-lite/master
+[2014-10-31 14:13:30.243165] [DEBUG] Start HttpRequests at: 2014-10-31 14:13:30
+[2014-10-31 14:13:31.014486] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/izenecloud/sf1r-lite/master/License'
+    1: 'https://raw.githubusercontent.com/izenecloud/sf1r-lite/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/izenecloud/sf1r-lite/master/license'
+[2014-10-31 14:13:31.014657] [DEBUG] End HttpRequests at: 2014-10-31 14:13:31
+[2014-10-31 14:13:31.014722] [DEBUG] time cost: 0.228505
+[2014-10-31 14:13:31.014769] [DEBUG] License file found
+[2014-10-31 14:13:31.035340] [DEBUG] Picked up license files: 
+    0: 'Apache License, V2 (Apache-2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0).txt'
+    2: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    3: 'Apache License, V2.0 (Apache-2.0).txt'
+    4: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    5: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    6: 'Apache License, Version 2.0(Apache-2.0-short).txt'
+    7: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-31 14:13:31.035449] [DEBUG] Key file[0]: Apache License, V2 (Apache-2.0).txt
+[2014-10-31 14:13:31.035520] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-31 14:13:31.035584] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-31 14:13:31.035648] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-31 14:13:31.035717] [DEBUG] Key file[4]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-31 14:13:31.035782] [DEBUG] Key file[5]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-31 14:13:31.035841] [DEBUG] Key file[6]: Apache License, Version 2.0(Apache-2.0-short).txt
+[2014-10-31 14:13:31.035902] [DEBUG] Key file[7]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-31 14:13:31.035969] [DEBUG] The length of keyFiles: 8

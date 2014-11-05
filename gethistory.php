@@ -11,10 +11,11 @@
         <link href="/css/bootstrap/3.2.0/bootstrap.custom.css" rel="stylesheet">
 		<link href="/css/2stage.css" rel="stylesheet">
 
-        <title>评估结果</title>
+        <title>检测结果</title>
         
     </head>
     <body>
+    <?php include_once("analyticstracking.php") ?>
         <div class="wrapper">
             <div class="header">
                 <div class="container">
@@ -50,7 +51,7 @@
         <div class="content">
             <div class="column-header">
                 <div class="container">
-                    <h1 class="title">开源许可评估结果</h1>
+                    <h1 class="title">开源许可检测结果</h1>
                 </div>
             </div>
         <div class="container">
@@ -85,8 +86,8 @@
 
         echo "<div>
                 <div id=\"checkwithfailed\">
-                    <span id=\"titleresult\">评估结果:</span>
-                    <span id=\"resultsentencepass\">评估通过!</span>
+                    <span id=\"titleresult\">检测结果:</span>
+                    <span id=\"resultsentencepass\">通过!</span>
                 </div>
                 <div class=\"star-content\">
                     <div class=\"left-arrow\"></div>
@@ -94,7 +95,7 @@
                     <div class=\"star-inner\">
                         <div class=\"star-badge\"></div>
                         <div class=\"star-text\">
-                            <h1>开源之星认证</h1>
+                            <h1>开源之星证书</h1>
                             <h2>";
         echo $proName;
         echo "</h2>

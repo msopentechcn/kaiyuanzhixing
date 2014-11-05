@@ -16,9 +16,12 @@
 		
 		<script src="http://www.kaiyuanshe.cn/ossstar/scripts/jquery-1.9.1.js" type="text/javascript"></script>
         <script src="/scripts/validate.js" type="text/javascript"></script>
+
 	</head>
 	<body>
+        <?php include_once("analyticstracking.php") ?>
         <?php
+                        
 			session_start();
 			$_SESSION = array();
 

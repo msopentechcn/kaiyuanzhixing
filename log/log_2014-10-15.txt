@@ -1,0 +1,597 @@
+[2014-10-15 22:01:18.469621] [INFO] <===================================================>
+[2014-10-15 22:07:33.788208] [INFO] <===================================================>
+[2014-10-15 22:07:34.852890] [DEBUG] Start loading license files at: 2014-10-15 22:07:34
+[2014-10-15 22:07:34.878707] [DEBUG] End loading license files at: 2014-10-15 22:07:34
+[2014-10-15 22:07:34.878792] [DEBUG] The prototype is GitHub
+[2014-10-15 22:07:34.879122] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:07:34.879194] [DEBUG] Start HttpRequests at: 2014-10-15 22:07:34
+[2014-10-15 22:07:50.060098] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/basho/riak/master/License'
+    1: 'https://raw.githubusercontent.com/basho/riak/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/basho/riak/master/license'
+[2014-10-15 22:07:50.060280] [DEBUG] End HttpRequests at: 2014-10-15 22:07:50
+[2014-10-15 22:07:50.060354] [DEBUG] time cost: 0.818908
+[2014-10-15 22:07:50.060422] [DEBUG] License file found
+[2014-10-15 22:07:50.087353] [DEBUG] Picked up license files: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:07:50.087440] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:07:50.087503] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:07:50.087563] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:07:50.087614] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:07:50.087675] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:07:50.087733] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:07:50.087785] [DEBUG] The length of keyFiles: 6
+[2014-10-15 22:08:47.724056] [INFO] <===================================================>
+[2014-10-15 22:08:47.800329] [DEBUG] Start loading license files at: 2014-10-15 22:08:47
+[2014-10-15 22:08:47.804887] [DEBUG] End loading license files at: 2014-10-15 22:08:47
+[2014-10-15 22:08:47.804955] [DEBUG] The prototype is GitHub
+[2014-10-15 22:08:47.805104] [DEBUG] 
+[2014-10-15 22:08:47.805177] [DEBUG] Start HttpRequests at: 2014-10-15 22:08:47
+[2014-10-15 22:08:47.862612] [DEBUG] End HttpRequests at: 2014-10-15 22:08:47
+[2014-10-15 22:08:47.862694] [DEBUG] time cost: 0.057456
+[2014-10-15 22:08:47.862745] [DEBUG] License file not found
+[2014-10-15 22:08:47.922970] [DEBUG] GitName: trunk
+[2014-10-15 22:09:03.390814] [ERROR] Git clone got exception: Cloning into 'trunk'...
+fatal: unable to access 'http://svn.apache.org/repos/asf/activemq/trunk/': Could not resolve host: svn.apache.org
+
+[2014-10-15 22:09:17.002737] [INFO] <===================================================>
+[2014-10-15 22:09:17.061027] [DEBUG] Start loading license files at: 2014-10-15 22:09:17
+[2014-10-15 22:09:17.065545] [DEBUG] End loading license files at: 2014-10-15 22:09:17
+[2014-10-15 22:09:17.065642] [DEBUG] The prototype is SVN
+[2014-10-15 22:09:19.994756] [DEBUG] License file found
+[2014-10-15 22:09:35.635488] [DEBUG] the found license file name in svn check out: LICENSE
+[2014-10-15 22:09:35.669590] [DEBUG] Picked up license files after svn check out: 
+    0: 'Academic Free License 3.0 (AFL-3.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0).txt'
+    2: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    3: 'Apache License, V2.0 (Apache-2.0).txt'
+    4: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    5: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    6: 'Apache License, Version 2.0(Apache-2.0-short).txt'
+    7: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+    8: 'The MIT License (MIT).txt'
+[2014-10-15 22:09:35.669684] [DEBUG] Key file[0]: Academic Free License 3.0 (AFL-3.0).txt
+[2014-10-15 22:09:35.669738] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:09:35.669796] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:09:35.669845] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:09:35.669889] [DEBUG] Key file[4]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:09:35.669934] [DEBUG] Key file[5]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:09:35.669979] [DEBUG] Key file[6]: Apache License, Version 2.0(Apache-2.0-short).txt
+[2014-10-15 22:09:35.670022] [DEBUG] Key file[7]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:09:35.670067] [DEBUG] Key file[8]: The MIT License (MIT).txt
+[2014-10-15 22:09:35.670115] [DEBUG] The length of keyFiles after svn check out: 9
+[2014-10-15 22:10:04.257869] [INFO] <===================================================>
+[2014-10-15 22:10:31.245673] [INFO] <===================================================>
+[2014-10-15 22:10:31.317210] [DEBUG] Start loading license files at: 2014-10-15 22:10:31
+[2014-10-15 22:10:31.321782] [DEBUG] End loading license files at: 2014-10-15 22:10:31
+[2014-10-15 22:10:31.321851] [DEBUG] The prototype is GitHub
+[2014-10-15 22:10:31.321969] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:10:31.322036] [DEBUG] Start HttpRequests at: 2014-10-15 22:10:31
+[2014-10-15 22:10:35.396874] [DEBUG] Start loading license files at: 2014-10-15 22:10:35
+[2014-10-15 22:10:35.401477] [DEBUG] End loading license files at: 2014-10-15 22:10:35
+[2014-10-15 22:10:35.401539] [DEBUG] The prototype is GitHub
+[2014-10-15 22:10:35.401659] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:10:35.401734] [DEBUG] Start HttpRequests at: 2014-10-15 22:10:35
+[2014-10-15 22:10:51.072140] [DEBUG] End HttpRequests at: 2014-10-15 22:10:51
+[2014-10-15 22:10:51.072278] [DEBUG] time cost: 0.249836
+[2014-10-15 22:10:51.072333] [DEBUG] License file not found
+[2014-10-15 22:10:51.093066] [DEBUG] GitName: riak
+[2014-10-15 22:10:51.678446] [DEBUG] End HttpRequests at: 2014-10-15 22:10:51
+[2014-10-15 22:10:51.678633] [DEBUG] time cost: 0.276822
+[2014-10-15 22:10:51.678694] [DEBUG] License file not found
+[2014-10-15 22:10:51.702877] [DEBUG] GitName: riak
+[2014-10-15 22:11:01.706012] [DEBUG] Repository size is: 20312
+[2014-10-15 22:11:14.198586] [DEBUG] Repository size is: 20312
+[2014-10-15 22:13:59.077147] [INFO] <===================================================>
+[2014-10-15 22:13:59.147469] [DEBUG] Start loading license files at: 2014-10-15 22:13:59
+[2014-10-15 22:13:59.151573] [DEBUG] End loading license files at: 2014-10-15 22:13:59
+[2014-10-15 22:13:59.151635] [DEBUG] The prototype is GitHub
+[2014-10-15 22:13:59.151747] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:13:59.151815] [DEBUG] Start HttpRequests at: 2014-10-15 22:13:59
+[2014-10-15 22:14:27.541317] [DEBUG] End HttpRequests at: 2014-10-15 22:14:27
+[2014-10-15 22:14:27.541423] [DEBUG] time cost: 0.38954
+[2014-10-15 22:14:27.541512] [DEBUG] License file not found
+[2014-10-15 22:14:27.564089] [DEBUG] GitName: riak
+[2014-10-15 22:14:48.817137] [DEBUG] Repository size is: 20312
+[2014-10-15 22:18:37.540307] [INFO] <===================================================>
+[2014-10-15 22:18:37.643789] [DEBUG] Start loading license files at: 2014-10-15 22:18:37
+[2014-10-15 22:18:37.648456] [DEBUG] End loading license files at: 2014-10-15 22:18:37
+[2014-10-15 22:18:37.648519] [DEBUG] The prototype is GitHub
+[2014-10-15 22:18:37.648638] [DEBUG] https://raw.githubusercontent.com/haiwen/seafile/master
+[2014-10-15 22:18:37.648713] [DEBUG] Start HttpRequests at: 2014-10-15 22:18:37
+[2014-10-15 22:18:40.764694] [DEBUG] found licesefile: License.txt
+    0: 'https://raw.githubusercontent.com/haiwen/seafile/master/License.txt'
+    1: 'https://raw.githubusercontent.com/haiwen/seafile/master/LICENSE.txt'
+    2: 'https://raw.githubusercontent.com/haiwen/seafile/master/license.txt'
+[2014-10-15 22:18:40.764823] [DEBUG] End HttpRequests at: 2014-10-15 22:18:40
+[2014-10-15 22:18:40.764906] [DEBUG] time cost: 0.116125
+[2014-10-15 22:18:40.764957] [DEBUG] License file found
+[2014-10-15 22:18:40.788161] [DEBUG] Picked up license files: 
+    0: 'GNU AFFERO GENERAL PUBLIC LICENSE, Version 3 (AGPL-3.0).txt'
+    1: 'GNU General Public License, version 2 (GPLv2).txt'
+    2: 'GNU General Public License, version 3 (GPLv3).txt'
+[2014-10-15 22:18:40.788296] [DEBUG] Key file[0]: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3 (AGPL-3.0).txt
+[2014-10-15 22:18:40.788351] [DEBUG] Key file[1]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 22:18:40.788398] [DEBUG] Key file[2]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 22:18:40.788445] [DEBUG] The length of keyFiles: 3
+[2014-10-15 22:20:35.360516] [INFO] <===================================================>
+[2014-10-15 22:20:35.400732] [DEBUG] Start loading license files at: 2014-10-15 22:20:35
+[2014-10-15 22:20:35.405704] [DEBUG] End loading license files at: 2014-10-15 22:20:35
+[2014-10-15 22:20:35.405776] [DEBUG] The prototype is GitHub
+[2014-10-15 22:20:35.405901] [DEBUG] https://raw.githubusercontent.com/fex-team/ueditor/master
+[2014-10-15 22:20:35.405972] [DEBUG] Start HttpRequests at: 2014-10-15 22:20:35
+[2014-10-15 22:21:01.651456] [DEBUG] End HttpRequests at: 2014-10-15 22:21:01
+[2014-10-15 22:21:01.651586] [DEBUG] time cost: 0.245533
+[2014-10-15 22:21:01.651640] [DEBUG] License file not found
+[2014-10-15 22:21:01.670200] [DEBUG] GitName: ueditor
+[2014-10-15 22:21:17.267326] [DEBUG] Repository size is: 
+[2014-10-15 22:29:26.350157] [INFO] <===================================================>
+[2014-10-15 22:29:26.447289] [DEBUG] Start loading license files at: 2014-10-15 22:29:26
+[2014-10-15 22:29:26.452927] [DEBUG] End loading license files at: 2014-10-15 22:29:26
+[2014-10-15 22:29:26.452991] [DEBUG] The prototype is GitHub
+[2014-10-15 22:29:26.453107] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:29:26.453176] [DEBUG] Start HttpRequests at: 2014-10-15 22:29:26
+[2014-10-15 22:31:49.476159] [INFO] <===================================================>
+[2014-10-15 22:31:49.577442] [DEBUG] Start loading license files at: 2014-10-15 22:31:49
+[2014-10-15 22:31:49.582285] [DEBUG] End loading license files at: 2014-10-15 22:31:49
+[2014-10-15 22:31:49.582355] [DEBUG] The prototype is GitHub
+[2014-10-15 22:31:49.582475] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:31:49.582550] [DEBUG] Start HttpRequests at: 2014-10-15 22:31:49
+[2014-10-15 22:32:05.028507] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/basho/riak/master/License'
+    1: 'https://raw.githubusercontent.com/basho/riak/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/basho/riak/master/license'
+[2014-10-15 22:32:05.028641] [DEBUG] End HttpRequests at: 2014-10-15 22:32:05
+[2014-10-15 22:32:05.028717] [DEBUG] time cost: 0.553904
+[2014-10-15 22:32:05.028765] [DEBUG] License file found
+[2014-10-15 22:32:05.051767] [DEBUG] Picked up license files: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:32:05.051858] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:32:05.051912] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:32:05.051958] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:32:05.052007] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:32:05.052073] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:32:05.052119] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:32:05.052165] [DEBUG] The length of keyFiles: 6
+[2014-10-15 22:32:53.041734] [INFO] <===================================================>
+[2014-10-15 22:33:29.254570] [INFO] <===================================================>
+[2014-10-15 22:33:52.345334] [DEBUG] Start loading license files at: 2014-10-15 22:33:52
+[2014-10-15 22:33:52.349411] [DEBUG] End loading license files at: 2014-10-15 22:33:52
+[2014-10-15 22:33:52.349483] [DEBUG] The prototype is GitHub
+[2014-10-15 22:33:52.349602] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:33:52.349670] [DEBUG] Start HttpRequests at: 2014-10-15 22:33:52
+[2014-10-15 22:34:05.702079] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/basho/riak/master/License'
+    1: 'https://raw.githubusercontent.com/basho/riak/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/basho/riak/master/license'
+[2014-10-15 22:34:05.702280] [DEBUG] End HttpRequests at: 2014-10-15 22:34:05
+[2014-10-15 22:34:05.702368] [DEBUG] time cost: 0.352628
+[2014-10-15 22:34:05.702423] [DEBUG] License file found
+[2014-10-15 22:34:05.736237] [DEBUG] Picked up license files: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:34:05.736327] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:34:05.736388] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:34:05.736443] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:34:05.736496] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:34:05.736550] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:34:05.736602] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:34:05.736655] [DEBUG] The length of keyFiles: 6
+[2014-10-15 22:38:42.122389] [DEBUG] Picked up license files after git clone: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:38:42.122536] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:38:42.122601] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:38:42.122652] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:38:42.122700] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:38:42.122747] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:38:42.122796] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:38:42.122843] [DEBUG] The length of keyFiles after git clone: 6
+[2014-10-15 22:38:42.170675] [DEBUG] The minimal key index in keyFiles after git clone: 2
+[2014-10-15 22:41:12.677634] [INFO] <===================================================>
+[2014-10-15 22:41:25.774246] [DEBUG] Start loading license files at: 2014-10-15 22:41:25
+[2014-10-15 22:41:25.779567] [DEBUG] End loading license files at: 2014-10-15 22:41:25
+[2014-10-15 22:41:25.779630] [DEBUG] The prototype is GitHub
+[2014-10-15 22:41:25.779751] [DEBUG] https://git.oschina.net/oschina/wp7-app/raw/master
+[2014-10-15 22:41:25.779819] [DEBUG] Start HttpRequests at: 2014-10-15 22:41:25
+[2014-10-15 22:41:41.583406] [DEBUG] found licesefile: License.txt
+    0: 'https://git.oschina.net/oschina/wp7-app/raw/master/License.txt'
+    1: 'https://git.oschina.net/oschina/wp7-app/raw/master/LICENSE.txt'
+    2: 'https://git.oschina.net/oschina/wp7-app/raw/master/license.txt'
+[2014-10-15 22:41:41.583533] [DEBUG] End HttpRequests at: 2014-10-15 22:41:41
+[2014-10-15 22:41:41.583602] [DEBUG] time cost: 0.196283
+[2014-10-15 22:41:41.583651] [DEBUG] License file found
+[2014-10-15 22:41:41.619545] [DEBUG] Picked up license files: 
+    0: 'GNU General Public License, version 2 (GPLv2).txt'
+    1: 'GNU General Public License, version 3 (GPLv3).txt'
+    2: 'The GNU Lesser General Public License, version 2.1 (LGPL-2.1).txt'
+    3: 'The GNU Lesser General Public License, version 3.0 (LGPL-3.0).txt'
+[2014-10-15 22:41:41.619648] [DEBUG] Key file[0]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 22:41:41.619700] [DEBUG] Key file[1]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 22:41:41.619748] [DEBUG] Key file[2]: The GNU Lesser General Public License, version 2.1 (LGPL-2.1).txt
+[2014-10-15 22:41:41.619792] [DEBUG] Key file[3]: The GNU Lesser General Public License, version 3.0 (LGPL-3.0).txt
+[2014-10-15 22:41:41.619839] [DEBUG] The length of keyFiles: 4
+[2014-10-15 22:42:03.563550] [INFO] <===================================================>
+[2014-10-15 22:42:04.608205] [DEBUG] Start loading license files at: 2014-10-15 22:42:04
+[2014-10-15 22:42:04.612709] [DEBUG] End loading license files at: 2014-10-15 22:42:04
+[2014-10-15 22:42:04.612797] [DEBUG] The prototype is GitHub
+[2014-10-15 22:42:04.612920] [DEBUG] https://raw.githubusercontent.com/basho/riak/master
+[2014-10-15 22:42:04.612988] [DEBUG] Start HttpRequests at: 2014-10-15 22:42:04
+[2014-10-15 22:42:41.741338] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/basho/riak/master/License'
+    1: 'https://raw.githubusercontent.com/basho/riak/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/basho/riak/master/license'
+[2014-10-15 22:42:41.741508] [DEBUG] End HttpRequests at: 2014-10-15 22:42:41
+[2014-10-15 22:42:41.741589] [DEBUG] time cost: 0.12853
+[2014-10-15 22:42:41.741656] [DEBUG] License file found
+[2014-10-15 22:42:41.774835] [DEBUG] Picked up license files: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:42:41.774955] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:42:41.775008] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:42:41.775063] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:42:41.775110] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:42:41.775167] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:42:41.775244] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:42:41.775291] [DEBUG] The length of keyFiles: 6
+[2014-10-15 22:44:39.500911] [DEBUG] Picked up license files after git clone: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:44:39.501039] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:44:39.501092] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:44:39.501141] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:44:39.501185] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:44:39.501230] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:44:39.501275] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:44:39.501321] [DEBUG] The length of keyFiles after git clone: 6
+[2014-10-15 22:44:39.555221] [DEBUG] The minimal key index in keyFiles after git clone: 2
+[2014-10-15 22:47:58.189138] [INFO] <===================================================>
+[2014-10-15 22:48:03.233159] [DEBUG] Start loading license files at: 2014-10-15 22:48:03
+[2014-10-15 22:48:03.237309] [DEBUG] End loading license files at: 2014-10-15 22:48:03
+[2014-10-15 22:48:03.237381] [DEBUG] The prototype is GitHub
+[2014-10-15 22:48:03.237502] [DEBUG] https://raw.githubusercontent.com/haiwen/seafile/master
+[2014-10-15 22:48:03.237570] [DEBUG] Start HttpRequests at: 2014-10-15 22:48:03
+[2014-10-15 22:48:05.184504] [DEBUG] found licesefile: License.txt
+    0: 'https://raw.githubusercontent.com/haiwen/seafile/master/License.txt'
+    1: 'https://raw.githubusercontent.com/haiwen/seafile/master/LICENSE.txt'
+    2: 'https://raw.githubusercontent.com/haiwen/seafile/master/license.txt'
+[2014-10-15 22:48:05.184660] [DEBUG] End HttpRequests at: 2014-10-15 22:48:05
+[2014-10-15 22:48:05.184736] [DEBUG] time cost: 0.052902
+[2014-10-15 22:48:05.184788] [DEBUG] License file found
+[2014-10-15 22:48:05.281229] [DEBUG] Picked up license files: 
+    0: 'GNU AFFERO GENERAL PUBLIC LICENSE, Version 3 (AGPL-3.0).txt'
+    1: 'GNU General Public License, version 2 (GPLv2).txt'
+    2: 'GNU General Public License, version 3 (GPLv3).txt'
+[2014-10-15 22:48:05.281354] [DEBUG] Key file[0]: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3 (AGPL-3.0).txt
+[2014-10-15 22:48:05.281407] [DEBUG] Key file[1]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 22:48:05.281452] [DEBUG] Key file[2]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 22:48:05.281497] [DEBUG] The length of keyFiles: 3
+[2014-10-15 22:48:55.241066] [INFO] <===================================================>
+[2014-10-15 22:49:08.393549] [DEBUG] Start loading license files at: 2014-10-15 22:49:08
+[2014-10-15 22:49:08.398281] [DEBUG] End loading license files at: 2014-10-15 22:49:08
+[2014-10-15 22:49:08.401767] [DEBUG] The prototype is GitHub
+[2014-10-15 22:49:08.401920] [DEBUG] https://raw.githubusercontent.com/fex-team/ueditor/master
+[2014-10-15 22:49:08.401989] [DEBUG] Start HttpRequests at: 2014-10-15 22:49:08
+[2014-10-15 22:49:09.213802] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/fex-team/ueditor/master/License'
+    1: 'https://raw.githubusercontent.com/fex-team/ueditor/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/fex-team/ueditor/master/license'
+[2014-10-15 22:49:09.213943] [DEBUG] End HttpRequests at: 2014-10-15 22:49:09
+[2014-10-15 22:49:09.214015] [DEBUG] time cost: 0.188044
+[2014-10-15 22:49:09.214066] [DEBUG] License file found
+[2014-10-15 22:49:09.232280] [DEBUG] Picked up license files: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 22:49:09.232362] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 22:49:09.232414] [DEBUG] The length of keyFiles: 1
+[2014-10-15 22:49:51.924213] [INFO] <===================================================>
+[2014-10-15 22:49:56.969579] [DEBUG] Start loading license files at: 2014-10-15 22:49:56
+[2014-10-15 22:49:56.973858] [DEBUG] End loading license files at: 2014-10-15 22:49:56
+[2014-10-15 22:49:56.973949] [DEBUG] The prototype is GitHub
+[2014-10-15 22:49:56.974071] [DEBUG] https://raw.githubusercontent.com/fex-team/ufinder/master
+[2014-10-15 22:49:56.974140] [DEBUG] Start HttpRequests at: 2014-10-15 22:49:56
+[2014-10-15 22:49:58.590739] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/fex-team/ufinder/master/License'
+    1: 'https://raw.githubusercontent.com/fex-team/ufinder/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/fex-team/ufinder/master/license'
+[2014-10-15 22:49:58.590862] [DEBUG] End HttpRequests at: 2014-10-15 22:49:58
+[2014-10-15 22:49:58.590931] [DEBUG] time cost: 0.383275
+[2014-10-15 22:49:58.590980] [DEBUG] License file found
+[2014-10-15 22:49:58.654160] [DEBUG] Picked up license files: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 22:49:58.654278] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 22:49:58.654344] [DEBUG] The length of keyFiles: 1
+[2014-10-15 22:50:37.360613] [INFO] <===================================================>
+[2014-10-15 22:50:56.473208] [DEBUG] Start loading license files at: 2014-10-15 22:50:56
+[2014-10-15 22:50:56.478058] [DEBUG] End loading license files at: 2014-10-15 22:50:56
+[2014-10-15 22:50:56.478123] [DEBUG] The prototype is GitHub
+[2014-10-15 22:50:56.478245] [DEBUG] https://code.csdn.net/silulusilulu/udmanager_linux/blob/master
+[2014-10-15 22:50:56.478378] [DEBUG] Start HttpRequests at: 2014-10-15 22:50:56
+[2014-10-15 22:51:19.709645] [DEBUG] End HttpRequests at: 2014-10-15 22:51:19
+[2014-10-15 22:51:19.709768] [DEBUG] time cost: 0.231317
+[2014-10-15 22:51:19.709822] [DEBUG] License file not found
+[2014-10-15 22:51:19.772797] [DEBUG] GitName: udmanager_linux
+[2014-10-15 22:51:57.934287] [ERROR] Git clone got exception: Cloning into 'udmanager_linux'...
+fatal: unable to access 'https://code.csdn.net/silulusilulu/udmanager_linux.git/': Could not resolve host: code.csdn.net
+
+[2014-10-15 22:54:09.511567] [INFO] <===================================================>
+[2014-10-15 22:54:26.120696] [DEBUG] Start loading license files at: 2014-10-15 22:54:26
+[2014-10-15 22:54:26.124996] [DEBUG] End loading license files at: 2014-10-15 22:54:26
+[2014-10-15 22:54:26.125061] [DEBUG] The prototype is GitHub
+[2014-10-15 22:54:26.125175] [DEBUG] https://code.csdn.net/wangpuyue07/webssh/blob/master
+[2014-10-15 22:54:26.125245] [DEBUG] Start HttpRequests at: 2014-10-15 22:54:26
+[2014-10-15 22:55:19.523797] [DEBUG] End HttpRequests at: 2014-10-15 22:55:19
+[2014-10-15 22:55:19.523925] [DEBUG] time cost: 0.39856
+[2014-10-15 22:55:19.523977] [DEBUG] License file not found
+[2014-10-15 22:55:19.544590] [DEBUG] GitName: webssh
+[2014-10-15 22:55:50.729971] [DEBUG] Picked up license files after git clone: 
+[2014-10-15 22:55:50.730122] [DEBUG] The length of keyFiles after git clone: 0
+[2014-10-15 22:58:23.528403] [INFO] <===================================================>
+[2014-10-15 22:58:25.949634] [DEBUG] Start loading license files at: 2014-10-15 22:58:25
+[2014-10-15 22:58:25.953677] [DEBUG] End loading license files at: 2014-10-15 22:58:25
+[2014-10-15 22:58:25.953741] [DEBUG] The prototype is GitHub
+[2014-10-15 22:58:25.953852] [DEBUG] https://code.csdn.net/RT-Thread/rt-thread/blob/master
+[2014-10-15 22:58:25.953919] [DEBUG] Start HttpRequests at: 2014-10-15 22:58:25
+[2014-10-15 22:58:39.772864] [DEBUG] found licesefile: Copying
+    0: 'https://code.csdn.net/RT-Thread/rt-thread/blob/master/Copying'
+    1: 'https://code.csdn.net/RT-Thread/rt-thread/blob/master/COPYING'
+    2: 'https://code.csdn.net/RT-Thread/rt-thread/blob/master/copying'
+[2014-10-15 22:58:39.772991] [DEBUG] End HttpRequests at: 2014-10-15 22:58:39
+[2014-10-15 22:58:39.773058] [DEBUG] time cost: 0.180927
+[2014-10-15 22:58:39.773106] [DEBUG] License file found
+[2014-10-15 22:58:39.839848] [DEBUG] Picked up license files: 
+    0: 'GNU General Public License, version 2 (GPLv2).txt'
+    1: 'GNU General Public License, version 3 (GPLv3).txt'
+[2014-10-15 22:58:39.839977] [DEBUG] Key file[0]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 22:58:39.840029] [DEBUG] Key file[1]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 22:58:39.840078] [DEBUG] The length of keyFiles: 2
+[2014-10-15 22:58:52.023164] [DEBUG] Picked up license files after git clone: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+[2014-10-15 22:58:52.023288] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 22:58:52.023341] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 22:58:52.023390] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 22:58:52.023437] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 22:58:52.023483] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 22:58:52.023528] [DEBUG] Key file[5]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 22:58:52.023587] [DEBUG] The length of keyFiles after git clone: 6
+[2014-10-15 22:58:52.067965] [DEBUG] The minimal key index in keyFiles after git clone: 2
+[2014-10-15 23:01:12.786724] [INFO] <===================================================>
+[2014-10-15 23:03:01.620147] [INFO] <===================================================>
+[2014-10-15 23:03:01.642287] [DEBUG] Start loading license files at: 2014-10-15 23:03:01
+[2014-10-15 23:03:01.646893] [DEBUG] End loading license files at: 2014-10-15 23:03:01
+[2014-10-15 23:03:01.646975] [DEBUG] The prototype is GitHub
+[2014-10-15 23:03:01.647133] [DEBUG] https://code.csdn.net/Tencent/koala/blob/master
+[2014-10-15 23:03:01.647231] [DEBUG] Start HttpRequests at: 2014-10-15 23:03:01
+[2014-10-15 23:03:08.029428] [DEBUG] found licesefile: License.txt
+    0: 'https://code.csdn.net/Tencent/koala/blob/master/License.txt'
+    1: 'https://code.csdn.net/Tencent/koala/blob/master/LICENSE.txt'
+    2: 'https://code.csdn.net/Tencent/koala/blob/master/license.txt'
+[2014-10-15 23:03:08.029588] [DEBUG] End HttpRequests at: 2014-10-15 23:03:08
+[2014-10-15 23:03:08.029656] [DEBUG] time cost: 0.617646
+[2014-10-15 23:03:08.029711] [DEBUG] License file found
+[2014-10-15 23:03:08.052661] [DEBUG] Picked up license files: 
+    0: 'Apache License, V2.0 (Apache-V2.0).txt'
+    1: 'Apache License, V2.0 (Apache-V2.0-NoAppendix).txt'
+    2: 'Apache License, V2.0 (Apache-2.0).txt'
+    3: 'Apache License, V2.0 (Apache-2.0-NoAppendix).txt'
+    4: 'Apache License, Version 2.0 (Apache-2.0).txt'
+    5: 'Apache License, Version 2.0(Apache-2.0-short).txt'
+    6: 'Apache License, Version2.0(Apache-2.0-NoAppendix).txt'
+    7: 'The MIT License (MIT).txt'
+[2014-10-15 23:03:08.052750] [DEBUG] Key file[0]: Apache License, V2.0 (Apache-V2.0).txt
+[2014-10-15 23:03:08.052802] [DEBUG] Key file[1]: Apache License, V2.0 (Apache-V2.0-NoAppendix).txt
+[2014-10-15 23:03:08.052849] [DEBUG] Key file[2]: Apache License, V2.0 (Apache-2.0).txt
+[2014-10-15 23:03:08.052896] [DEBUG] Key file[3]: Apache License, V2.0 (Apache-2.0-NoAppendix).txt
+[2014-10-15 23:03:08.052942] [DEBUG] Key file[4]: Apache License, Version 2.0 (Apache-2.0).txt
+[2014-10-15 23:03:08.052988] [DEBUG] Key file[5]: Apache License, Version 2.0(Apache-2.0-short).txt
+[2014-10-15 23:03:08.053033] [DEBUG] Key file[6]: Apache License, Version2.0(Apache-2.0-NoAppendix).txt
+[2014-10-15 23:03:08.053080] [DEBUG] Key file[7]: The MIT License (MIT).txt
+[2014-10-15 23:03:08.053175] [DEBUG] The length of keyFiles: 8
+[2014-10-15 23:03:41.532294] [INFO] <===================================================>
+[2014-10-15 23:03:41.550132] [DEBUG] Start loading license files at: 2014-10-15 23:03:41
+[2014-10-15 23:03:41.554599] [DEBUG] End loading license files at: 2014-10-15 23:03:41
+[2014-10-15 23:03:41.554666] [DEBUG] The prototype is GitHub
+[2014-10-15 23:03:41.554788] [DEBUG] https://raw.githubusercontent.com/mtjs/mt/master
+[2014-10-15 23:03:41.554856] [DEBUG] Start HttpRequests at: 2014-10-15 23:03:41
+[2014-10-15 23:03:50.574867] [DEBUG] End HttpRequests at: 2014-10-15 23:03:50
+[2014-10-15 23:03:50.574965] [DEBUG] time cost: 0.020044
+[2014-10-15 23:03:50.575025] [DEBUG] License file not found
+[2014-10-15 23:03:50.596923] [DEBUG] GitName: mt
+[2014-10-15 23:04:01.773794] [DEBUG] Repository size is: 4794
+[2014-10-15 23:04:23.398765] [INFO] <===================================================>
+[2014-10-15 23:04:23.427376] [DEBUG] Start loading license files at: 2014-10-15 23:04:23
+[2014-10-15 23:04:23.431576] [DEBUG] End loading license files at: 2014-10-15 23:04:23
+[2014-10-15 23:04:23.431642] [DEBUG] The prototype is GitHub
+[2014-10-15 23:04:23.431761] [DEBUG] https://git.oschina.net/oschina/wp7-app/raw/master
+[2014-10-15 23:04:23.431828] [DEBUG] Start HttpRequests at: 2014-10-15 23:04:23
+[2014-10-15 23:04:42.770046] [DEBUG] found licesefile: License.txt
+    0: 'https://git.oschina.net/oschina/wp7-app/raw/master/License.txt'
+    1: 'https://git.oschina.net/oschina/wp7-app/raw/master/LICENSE.txt'
+    2: 'https://git.oschina.net/oschina/wp7-app/raw/master/license.txt'
+[2014-10-15 23:04:42.770183] [DEBUG] End HttpRequests at: 2014-10-15 23:04:42
+[2014-10-15 23:04:42.770246] [DEBUG] time cost: 0.338358
+[2014-10-15 23:04:42.770292] [DEBUG] License file found
+[2014-10-15 23:04:42.790025] [DEBUG] Picked up license files: 
+    0: 'GNU General Public License, version 2 (GPLv2).txt'
+    1: 'GNU General Public License, version 3 (GPLv3).txt'
+    2: 'The GNU Lesser General Public License, version 2.1 (LGPL-2.1).txt'
+    3: 'The GNU Lesser General Public License, version 3.0 (LGPL-3.0).txt'
+[2014-10-15 23:04:42.790122] [DEBUG] Key file[0]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 23:04:42.790174] [DEBUG] Key file[1]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 23:04:42.790221] [DEBUG] Key file[2]: The GNU Lesser General Public License, version 2.1 (LGPL-2.1).txt
+[2014-10-15 23:04:42.790267] [DEBUG] Key file[3]: The GNU Lesser General Public License, version 3.0 (LGPL-3.0).txt
+[2014-10-15 23:04:42.790314] [DEBUG] The length of keyFiles: 4
+[2014-10-15 23:07:12.985006] [INFO] <===================================================>
+[2014-10-15 23:07:13.014746] [DEBUG] Start loading license files at: 2014-10-15 23:07:13
+[2014-10-15 23:07:13.019009] [DEBUG] End loading license files at: 2014-10-15 23:07:13
+[2014-10-15 23:07:13.019077] [DEBUG] The prototype is GitHub
+[2014-10-15 23:07:13.019195] [DEBUG] https://raw.githubusercontent.com/avoscloud/ticket-app/master
+[2014-10-15 23:07:13.019263] [DEBUG] Start HttpRequests at: 2014-10-15 23:07:13
+[2014-10-15 23:07:19.351784] [DEBUG] End HttpRequests at: 2014-10-15 23:07:19
+[2014-10-15 23:07:19.351893] [DEBUG] time cost: 0.33257
+[2014-10-15 23:07:19.351944] [DEBUG] License file not found
+[2014-10-15 23:07:19.373402] [DEBUG] GitName: ticket-app
+[2014-10-15 23:07:51.385025] [DEBUG] Repository size is: 3385
+[2014-10-15 23:17:56.535418] [INFO] <===================================================>
+[2014-10-15 23:17:56.575939] [DEBUG] Start loading license files at: 2014-10-15 23:17:56
+[2014-10-15 23:17:56.580004] [DEBUG] End loading license files at: 2014-10-15 23:17:56
+[2014-10-15 23:17:56.580070] [DEBUG] The prototype is GitHub
+[2014-10-15 23:17:56.580188] [DEBUG] https://gitcafe.com/ucloud/chameleon/raw/master
+[2014-10-15 23:17:56.580255] [DEBUG] Start HttpRequests at: 2014-10-15 23:17:56
+[2014-10-15 23:18:10.685868] [DEBUG] found licesefile: License
+    0: 'https://gitcafe.com/ucloud/chameleon/raw/master/License'
+    1: 'https://gitcafe.com/ucloud/chameleon/raw/master/LICENSE'
+    2: 'https://gitcafe.com/ucloud/chameleon/raw/master/license'
+[2014-10-15 23:18:10.686018] [DEBUG] End HttpRequests at: 2014-10-15 23:18:10
+[2014-10-15 23:18:10.686101] [DEBUG] time cost: 0.105785
+[2014-10-15 23:18:10.686163] [DEBUG] License file found
+[2014-10-15 23:18:10.716113] [DEBUG] Picked up license files: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 23:18:10.716193] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 23:18:10.716259] [DEBUG] The length of keyFiles: 1
+[2014-10-15 23:20:15.066787] [INFO] <===================================================>
+[2014-10-15 23:20:15.100071] [DEBUG] Start loading license files at: 2014-10-15 23:20:15
+[2014-10-15 23:20:15.104490] [DEBUG] End loading license files at: 2014-10-15 23:20:15
+[2014-10-15 23:20:15.104553] [DEBUG] The prototype is GitHub
+[2014-10-15 23:20:15.104676] [DEBUG] https://gitcafe.com/9miao/CrossApp/raw/master
+[2014-10-15 23:20:15.104744] [DEBUG] Start HttpRequests at: 2014-10-15 23:20:15
+[2014-10-15 23:20:54.501049] [DEBUG] End HttpRequests at: 2014-10-15 23:20:54
+[2014-10-15 23:20:54.501148] [DEBUG] time cost: 0.396344
+[2014-10-15 23:20:54.501208] [DEBUG] License file not found
+[2014-10-15 23:20:54.523031] [DEBUG] GitName: CrossApp
+[2014-10-15 23:23:37.593761] [INFO] <===================================================>
+[2014-10-15 23:23:37.638855] [DEBUG] Start loading license files at: 2014-10-15 23:23:37
+[2014-10-15 23:23:37.643241] [DEBUG] End loading license files at: 2014-10-15 23:23:37
+[2014-10-15 23:23:37.643322] [DEBUG] The prototype is GitHub
+[2014-10-15 23:23:37.643491] [DEBUG] https://code.csdn.net/u013116028/dash_dictionary/blob/master
+[2014-10-15 23:23:37.643573] [DEBUG] Start HttpRequests at: 2014-10-15 23:23:37
+[2014-10-15 23:23:54.144591] [DEBUG] End HttpRequests at: 2014-10-15 23:23:54
+[2014-10-15 23:23:54.144690] [DEBUG] time cost: 0.498944
+[2014-10-15 23:23:54.144746] [DEBUG] License file not found
+[2014-10-15 23:23:54.319531] [DEBUG] GitName: dash_dictionary
+[2014-10-15 23:35:09.887480] [INFO] <===================================================>
+[2014-10-15 23:35:09.911818] [DEBUG] Start loading license files at: 2014-10-15 23:35:09
+[2014-10-15 23:35:09.916270] [DEBUG] End loading license files at: 2014-10-15 23:35:09
+[2014-10-15 23:35:09.916338] [DEBUG] The prototype is GitHub
+[2014-10-15 23:35:09.916544] [DEBUG] https://raw.githubusercontent.com/NetEase/pomelo/master
+[2014-10-15 23:35:09.916675] [DEBUG] Start HttpRequests at: 2014-10-15 23:35:09
+[2014-10-15 23:35:10.594175] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/NetEase/pomelo/master/License'
+    1: 'https://raw.githubusercontent.com/NetEase/pomelo/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/NetEase/pomelo/master/license'
+[2014-10-15 23:35:10.594335] [DEBUG] End HttpRequests at: 2014-10-15 23:35:10
+[2014-10-15 23:35:10.594403] [DEBUG] time cost: 0.322332
+[2014-10-15 23:35:10.594455] [DEBUG] License file found
+[2014-10-15 23:35:10.614387] [DEBUG] Picked up license files: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 23:35:10.614479] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 23:35:10.614536] [DEBUG] The length of keyFiles: 1
+[2014-10-15 23:36:53.550657] [DEBUG] Picked up license files after git clone: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 23:36:53.550802] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 23:36:53.550860] [DEBUG] The length of keyFiles after git clone: 1
+[2014-10-15 23:36:53.551888] [DEBUG] The minimal key index in keyFiles after git clone: 0
+[2014-10-15 23:41:42.786201] [INFO] <===================================================>
+[2014-10-15 23:41:42.816705] [DEBUG] Start loading license files at: 2014-10-15 23:41:42
+[2014-10-15 23:41:42.821135] [DEBUG] End loading license files at: 2014-10-15 23:41:42
+[2014-10-15 23:41:42.821213] [DEBUG] The prototype is GitHub
+[2014-10-15 23:41:42.821352] [DEBUG] https://raw.githubusercontent.com/haiwen/seafile/master
+[2014-10-15 23:41:42.821435] [DEBUG] Start HttpRequests at: 2014-10-15 23:41:42
+[2014-10-15 23:41:44.089005] [DEBUG] found licesefile: License.txt
+    0: 'https://raw.githubusercontent.com/haiwen/seafile/master/License.txt'
+    1: 'https://raw.githubusercontent.com/haiwen/seafile/master/LICENSE.txt'
+    2: 'https://raw.githubusercontent.com/haiwen/seafile/master/license.txt'
+[2014-10-15 23:41:44.089148] [DEBUG] End HttpRequests at: 2014-10-15 23:41:44
+[2014-10-15 23:41:44.089216] [DEBUG] time cost: 0.732287
+[2014-10-15 23:41:44.089276] [DEBUG] License file found
+[2014-10-15 23:41:44.230854] [DEBUG] Picked up license files: 
+    0: 'GNU AFFERO GENERAL PUBLIC LICENSE, Version 3 (AGPL-3.0).txt'
+    1: 'GNU General Public License, version 2 (GPLv2).txt'
+    2: 'GNU General Public License, version 3 (GPLv3).txt'
+[2014-10-15 23:41:44.231003] [DEBUG] Key file[0]: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3 (AGPL-3.0).txt
+[2014-10-15 23:41:44.231067] [DEBUG] Key file[1]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 23:41:44.231118] [DEBUG] Key file[2]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 23:41:44.231165] [DEBUG] The length of keyFiles: 3
+[2014-10-15 23:44:21.509099] [INFO] <===================================================>
+[2014-10-15 23:44:21.527430] [DEBUG] Start loading license files at: 2014-10-15 23:44:21
+[2014-10-15 23:44:21.531405] [DEBUG] End loading license files at: 2014-10-15 23:44:21
+[2014-10-15 23:44:21.531471] [DEBUG] The prototype is GitHub
+[2014-10-15 23:44:21.531594] [DEBUG] https://raw.githubusercontent.com/fex-team/ueditor/master
+[2014-10-15 23:44:21.531671] [DEBUG] Start HttpRequests at: 2014-10-15 23:44:21
+[2014-10-15 23:44:22.102720] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/fex-team/ueditor/master/License'
+    1: 'https://raw.githubusercontent.com/fex-team/ueditor/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/fex-team/ueditor/master/license'
+[2014-10-15 23:44:22.102852] [DEBUG] End HttpRequests at: 2014-10-15 23:44:22
+[2014-10-15 23:44:22.102924] [DEBUG] time cost: 0.428839
+[2014-10-15 23:44:22.102972] [DEBUG] License file found
+[2014-10-15 23:44:22.613826] [DEBUG] Picked up license files: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 23:44:22.613956] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 23:44:22.614007] [DEBUG] The length of keyFiles: 1
+[2014-10-15 23:45:48.638358] [INFO] <===================================================>
+[2014-10-15 23:45:48.660832] [DEBUG] Start loading license files at: 2014-10-15 23:45:48
+[2014-10-15 23:45:48.665057] [DEBUG] End loading license files at: 2014-10-15 23:45:48
+[2014-10-15 23:45:48.665142] [DEBUG] The prototype is GitHub
+[2014-10-15 23:45:48.665271] [DEBUG] https://raw.githubusercontent.com/fex-team/ufinder/master
+[2014-10-15 23:45:48.665338] [DEBUG] Start HttpRequests at: 2014-10-15 23:45:48
+[2014-10-15 23:45:50.497522] [DEBUG] found licesefile: License
+    0: 'https://raw.githubusercontent.com/fex-team/ufinder/master/License'
+    1: 'https://raw.githubusercontent.com/fex-team/ufinder/master/LICENSE'
+    2: 'https://raw.githubusercontent.com/fex-team/ufinder/master/license'
+[2014-10-15 23:45:50.497657] [DEBUG] End HttpRequests at: 2014-10-15 23:45:50
+[2014-10-15 23:45:50.497718] [DEBUG] time cost: 0.16768
+[2014-10-15 23:45:50.497765] [DEBUG] License file found
+[2014-10-15 23:45:50.519707] [DEBUG] Picked up license files: 
+    0: 'The MIT License (MIT).txt'
+[2014-10-15 23:45:50.519782] [DEBUG] Key file[0]: The MIT License (MIT).txt
+[2014-10-15 23:45:50.519833] [DEBUG] The length of keyFiles: 1
+[2014-10-15 23:47:08.232420] [INFO] <===================================================>
+[2014-10-15 23:47:08.260596] [DEBUG] Start loading license files at: 2014-10-15 23:47:08
+[2014-10-15 23:47:08.264849] [DEBUG] End loading license files at: 2014-10-15 23:47:08
+[2014-10-15 23:47:08.264946] [DEBUG] The prototype is GitHub
+[2014-10-15 23:47:08.265074] [DEBUG] https://code.csdn.net/RT-Thread/rt-thread/blob/master
+[2014-10-15 23:47:08.265144] [DEBUG] Start HttpRequests at: 2014-10-15 23:47:08
+[2014-10-15 23:47:22.146137] [DEBUG] found licesefile: Copying
+    0: 'https://code.csdn.net/RT-Thread/rt-thread/blob/master/Copying'
+    1: 'https://code.csdn.net/RT-Thread/rt-thread/blob/master/COPYING'
+    2: 'https://code.csdn.net/RT-Thread/rt-thread/blob/master/copying'
+[2014-10-15 23:47:22.146269] [DEBUG] End HttpRequests at: 2014-10-15 23:47:22
+[2014-10-15 23:47:22.146330] [DEBUG] time cost: 0.118873
+[2014-10-15 23:47:22.146375] [DEBUG] License file found
+[2014-10-15 23:47:22.171010] [DEBUG] Picked up license files: 
+    0: 'GNU General Public License, version 2 (GPLv2).txt'
+    1: 'GNU General Public License, version 3 (GPLv3).txt'
+[2014-10-15 23:47:22.171092] [DEBUG] Key file[0]: GNU General Public License, version 2 (GPLv2).txt
+[2014-10-15 23:47:22.171152] [DEBUG] Key file[1]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-15 23:47:22.171202] [DEBUG] The length of keyFiles: 2

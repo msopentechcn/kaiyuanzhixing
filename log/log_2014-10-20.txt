@@ -1,0 +1,21 @@
+[2014-10-20 12:23:30.440046] [INFO] <===================================================>
+[2014-10-20 12:23:30.472146] [DEBUG] Start loading license files at: 2014-10-20 12:23:30
+[2014-10-20 12:23:30.477344] [DEBUG] End loading license files at: 2014-10-20 12:23:30
+[2014-10-20 12:23:30.477406] [DEBUG] The prototype is GitHub
+[2014-10-20 12:23:30.477525] [DEBUG] https://gitcafe.com/weixiao/yasm/raw/master
+[2014-10-20 12:23:30.477591] [DEBUG] Start HttpRequests at: 2014-10-20 12:23:30
+[2014-10-20 12:23:44.714107] [DEBUG] found licesefile: Copying
+    0: 'https://gitcafe.com/weixiao/yasm/raw/master/Copying'
+    1: 'https://gitcafe.com/weixiao/yasm/raw/master/COPYING'
+    2: 'https://gitcafe.com/weixiao/yasm/raw/master/copying'
+[2014-10-20 12:23:44.714236] [DEBUG] End HttpRequests at: 2014-10-20 12:23:44
+[2014-10-20 12:23:44.714298] [DEBUG] time cost: 0.236649
+[2014-10-20 12:23:44.714344] [DEBUG] License file found
+[2014-10-20 12:23:44.736902] [DEBUG] Picked up license files: 
+    0: 'GNU General Public License, v2 (GPL-v2).txt'
+    1: 'GNU General Public License, version 2 (GPL-v2).txt'
+    2: 'GNU General Public License, version 3 (GPLv3).txt'
+[2014-10-20 12:23:44.736974] [DEBUG] Key file[0]: GNU General Public License, v2 (GPL-v2).txt
+[2014-10-20 12:23:44.737024] [DEBUG] Key file[1]: GNU General Public License, version 2 (GPL-v2).txt
+[2014-10-20 12:23:44.737070] [DEBUG] Key file[2]: GNU General Public License, version 3 (GPLv3).txt
+[2014-10-20 12:23:44.737116] [DEBUG] The length of keyFiles: 3
